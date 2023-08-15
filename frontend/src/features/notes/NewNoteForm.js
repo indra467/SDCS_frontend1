@@ -92,7 +92,7 @@ const NewNoteForm = ({ users }) => {
                     value={text}
                     onChange={onTextChanged}
                 />
-                                <label className="form__label" htmlFor="text">
+                <label className="form__label" htmlFor="text">
                     Short Term:</label>
                 <textarea
                     className={`form__input form__input--text ${validTextClass}`}
@@ -101,7 +101,7 @@ const NewNoteForm = ({ users }) => {
                     value={text}
                     onChange={onTextChanged}
                 />
-                                <label className="form__label" htmlFor="text">
+                <label className="form__label" htmlFor="text">
                     Expired:</label>
                 <textarea
                     className={`form__input form__input--text ${validTextClass}`}
@@ -110,7 +110,7 @@ const NewNoteForm = ({ users }) => {
                     value={text}
                     onChange={onTextChanged}
                 />
-                                <label className="form__label" htmlFor="text">
+                <label className="form__label" htmlFor="text">
                     Won:</label>
                 <textarea
                     className={`form__input form__input--text ${validTextClass}`}
@@ -119,7 +119,7 @@ const NewNoteForm = ({ users }) => {
                     value={text}
                     onChange={onTextChanged}
                 />
-                                <label className="form__label" htmlFor="text">
+                <label className="form__label" htmlFor="text">
                     Open:</label>
                 <textarea
                     className={`form__input form__input--text ${validTextClass}`}
@@ -128,7 +128,7 @@ const NewNoteForm = ({ users }) => {
                     value={text}
                     onChange={onTextChanged}
                 />
-                                <label className="form__label" htmlFor="text">
+                <label className="form__label" htmlFor="text">
                     Closed:</label>
                 <textarea
                     className={`form__input form__input--text ${validTextClass}`}
@@ -137,7 +137,7 @@ const NewNoteForm = ({ users }) => {
                     value={text}
                     onChange={onTextChanged}
                 />
-
+                <b className="back">Go Back</b>
                 <label className="form__label form__checkbox-container" htmlFor="username">
                     Submit</label>
                 <select
