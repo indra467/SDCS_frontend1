@@ -643,9 +643,7 @@ tr {
 
 }
 .form__label{
-color: #0012da;
-border: #0F172A;
-background-color: #ffffff;
+color: #f9faff;
 width: fit-content;
 font-size: large;
 font:400;
@@ -655,3 +653,13 @@ border-radius:0cqmin;
 
 
 }
+
+
+.back{
+  position: absolute;
+  top: 59px;
+  left: 1273px;
+  display: inline-block;
+  width: fit-content;
+  height: fit-content;
+  background-color: color(xyz-d65 0.29 0.22 0.7);}
