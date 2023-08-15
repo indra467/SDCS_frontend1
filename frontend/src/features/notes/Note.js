@@ -1,62 +1,44 @@
-import { Link } from 'react-router-dom'
-import { useGetNotesQuery } from "./notesApiSlice"
-import Note from "./Note"
-import useAuth from "../../hooks/useAuth"
-import useTitle from "../../hooks/useTitle"
-import PulseLoader from 'react-spinners/PulseLoader'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
+import { useNavigate } from 'react-router-dom'
+import { useGetNotesQuery } from './notesApiSlice'
+import { memo } from 'react'
 
-const NotesList = () => {
-    useTitle('techNotes: Notes List')
+const Note = ({ noteId }) => {
 
-    const { username, isManager, isAdmin, isSales_Employee } = useAuth()
-
-    const {
-        data: notes,
-        isLoading,
-        isSuccess,
-        isError,
-        error
-    } = useGetNotesQuery('notesList', {
-        pollingInterval: 15000,
-        refetchOnFocus: true,
-        refetchOnMountOrArgChange: true
+    const { note } = useGetNotesQuery("notesList", {
+        selectFromResult: ({ data }) => ({
+            note: data?.entities[noteId]
+        }),
     })
 
-    let content
+    const navigate = useNavigate()
 
-    if (isLoading) content = <PulseLoader color={"#FFF"} />
+    if (note) {
+        const created = new Date(note.createdAt).toLocaleString('en-US', { day: 'numeric', month: 'long' })
 
-    if (isError) {
-        content = <p className="errmsg">{error?.data?.message}</p>
-    }
+        const updated = new Date(note.updatedAt).toLocaleString('en-US', { day: 'numeric', month: 'long' })
 
-    if (isSuccess) {
-        const { ids, entities } = notes
+        const handleEdit = () => navigate(`/dash/notes/${noteId}`)
 
-        let filteredIds
-        if (isManager || isAdmin || isSales_Employee) {
-            filteredIds = [...ids]
-        } else {
-            filteredIds = ids.filter(noteId => entities[noteId].username === username)
-        }
+        return (
+         
+            <tr className="table__row">
+                
+                
+                <td className="table__cell note__title">{note.title}</td>
+                <td className="table__cell note__username">{note.period}</td>
+                <td className="table__cell note__username">{note.status}</td>
+                
+               
 
-        const tableContent = ids?.length && filteredIds.map(noteId => <Note key={noteId} noteId={noteId} />)
-
-        content = (
-            <div className="desktop-16">
-      <div className="desktop-16-child" />
-      <div className="desktop-16-item" />
-      <b className="back1">back</b>
-      <div className="desktop-16-inner" />
-      
-      <b className="b" >1.</b>
-      <b className="period">Period</b>
-      <b className="order-id">Order ID</b>
-      <b className="status">Status</b>
-    </div>
+                
+            </tr>
         )
-    }
 
-    return content
+    } else return null
 }
-export default NotesList
+
+const memoizedNote = memo(Note)
+
+export default memoizedNote

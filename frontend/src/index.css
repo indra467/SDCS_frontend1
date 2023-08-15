@@ -199,6 +199,7 @@ tr {
 .table {
   font-size: 1rem;
   width: 100%;
+  padding-top: 40px;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   color: var(--TABLE-COLOR);
@@ -213,14 +214,14 @@ tr {
 
 .table__thead {
   position: sticky;
-  top: 0;
+  top: 0px;
   z-index: 1;
 }
 
 .table__th,
 .table__cell {
   background-color: var(--TABLE-BGCOLOR);
-  text-align: left;
+  text-align:center;
   border: 1px solid var(--TABLE-COLOR);
   padding: 0.5em;
 }
@@ -366,11 +367,12 @@ tr {
   .table--notes {
     grid-template-columns: repeat(3, 1fr) 2fr repeat(2, 1fr);
   }
-
+  .note__title,
   .note__created,
   .note__updated,
   .note__username {
-    display: block
+    display: block;
+    
   }
 
   .form__action-buttons {
@@ -572,6 +574,7 @@ tr {
 .order-id,
 .period,
 .status {
+  color: #d4d4d4;
   position: absolute;
   top: 8px;
   left: 75px;
@@ -589,18 +592,18 @@ tr {
 .period,
 .status {
   top: 66px;
-  left: 798px;
+  left: 850px;
   width: 151px;
   height: 70px;
 }
 .order-id,
 .status {
-  left: 340px;
-  width: 197px;
+  left: 110px;
+    width: 197px;
 }
 .status {
   top: 63px;
-  left: 1134px;
+  left: 1300px;
 }
 .desktop-16 {
   position: relative;
