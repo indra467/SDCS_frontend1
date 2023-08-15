@@ -523,3 +523,13 @@ tr {
   color: var(--color-black);
   font-family: var(--font-poppins);
 }
+.sort-list {
+  position: absolute;
+  background-color: #F00;
+  bottom: 60px;
+  left: 25px;
+  display: inline-block;
+  width: 125px;
+  height: 30px;
+  
+}
