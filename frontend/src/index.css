@@ -95,7 +95,9 @@ a {
 
 a:any-link {
   color: var(--LINK-COLOR);
+  
 }
+.message{background-color: #0887d6;}
 
 a:hover,
 a:focus-visible {
@@ -523,6 +525,10 @@ tr {
   color: var(--color-black);
   font-family: var(--font-poppins);
 }
+.Notifications{
+
+  color: rgb(240, 30, 30);
+}
 .sort-list {
   position: absolute;
   background-color: #F00;
@@ -532,4 +538,82 @@ tr {
   width: 125px;
   height: 30px;
   
+}
+.desktop-16-child {
+  position: absolute;
+  top: 10px;
+  left: 1247px;
+  border-radius: 23px;
+  background: linear-gradient(180deg, #0887d6, rgba(221, 221, 221, 0));
+  width: 167px;
+  height: 56px;
+}
+.desktop-16-item {
+  position: absolute;
+  top: 127px;
+  left: 79px;
+  border-radius: 23px;
+  background-color: #e8a2a2;
+  width: 1288px;
+  height: 35px;
+}
+
+.back1 {
+  position: absolute;
+  top: 21px;
+  left: 1308px;
+  display: inline-block;
+  width: 106px;
+  height: 55px;
+
+}
+
+.b,
+.order-id,
+.period,
+.status {
+  position: absolute;
+  top: 8px;
+  left: 75px;
+  display: inline-block;
+  width: 196px;
+  height: 55px;
+}
+.b{
+  top: 129px;
+  left: 101px;
+  width: 120px;
+  height: 87px;
+}
+.order-id,
+.period,
+.status {
+  top: 66px;
+  left: 798px;
+  width: 151px;
+  height: 70px;
+}
+.order-id,
+.status {
+  left: 340px;
+  width: 197px;
+}
+.status {
+  top: 63px;
+  left: 1134px;
+}
+.desktop-16 {
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-21xl);
+  color: var(--color-black);
+  font-family: var(--font-poppins);
+}
+.dash-header__title{
+  font-family: sans-serif;
+  color: #70a0e9;
 }
