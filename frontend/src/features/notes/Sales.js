@@ -19,6 +19,7 @@ const Sales_welcome = () => {
             <h1>Welcome {username}!</h1>
             {(isSales_Employee) && <div className="left-sidebar">
             <p><Link to="/dash/notes">Manage RFQ</Link></p>
+            <b className=" sort-list">Sort order list</b>
             <p><Link to="/dash/users">Deal Quality Calculation</Link></p>
             
                 <p><Link to="/dash/users">Manage Equipped Occupancy</Link></p>
