@@ -67,7 +67,9 @@ const Login = () => {
             <header>
                 <h1>Employee Login</h1>
             </header>
-           
+            <div className="desktop-17">
+      <img className="desktop-17-child" alt="" src="/frame-71@2x.png" />
+    </div>
             <main className="login">
                 <p ref={errRef} className={errClass} aria-live="assertive">{errMsg}</p>
 
