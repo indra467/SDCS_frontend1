@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
 import useTitle from '../../hooks/useTitle'
+import { Layout } from 'antd'
+import Sidebar from '../../components/Sidebar'
 
 const Welcome = () => {
 
@@ -13,8 +15,6 @@ const Welcome = () => {
 
     const content = (
         <section className="welcome">
-
-            <p>{today}</p>
 
             <h1>Welcome {username}!</h1>
             {(isSales_Employee || isAdmin) && <div className="left-sidebar">
@@ -33,6 +33,11 @@ const Welcome = () => {
         </section>
     )
 
-    return content
+    // return content
+    return(
+        <div className='bg-warning'>
+            
+        </div>
+    );
 }
 export default Welcome

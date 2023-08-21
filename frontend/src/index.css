@@ -346,6 +346,11 @@ tr {
   border-radius: 3.3rem;
 }
 
+.menu_icon{
+  color: #fff;
+  font-size: 500px;
+}
+
 @media screen and (max-width: 400px) {
   h1 {
     font-size: 2rem;

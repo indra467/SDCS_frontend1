@@ -132,14 +132,14 @@ const Login = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input your username!",
+                    message: "Please input your employee id!",
                   },
                 ]}
               >
                 <Input
                   prefix={<UserOutlined className="site-form-item-icon" />}
                   className="form__input"
-                  placeholder="Username"
+                  placeholder="Employee ID"
                   ref={userRef}
                   value={username}
                   onChange={handleUserInput}
