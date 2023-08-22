@@ -96,7 +96,7 @@ const Sidebar = ({ collapse }) => {
   return (
     <Sider trigger={null} collapsible collapsed={collapse} breakpoint="lg" onBreakpoint={(broken)=>console.log(broken)} collapsedWidth={0}>
       <div className="company_logo mb-2">
-        <img src="./img/SDG Logo.png" className="w-100 "></img>
+        <img src="./img/SDG_Logo.png" className="w-100"></img>
       </div>
       <div className="px-4 d-flex flex-row align-items-center justify-content-start">
         <UserOutlined className="h5 pr-2" />

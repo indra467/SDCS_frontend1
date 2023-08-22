@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom'
-
+import Styles from "./Public.module.css"
+import { Container } from 'react-bootstrap'
 const Public = () => {
     const content = (
-        <section className="public">
+        <div className={`${Styles.public} m-0 p-0`}>
             <header>
                 <h1>SDCS <span className="nowrap">Cranes!</span></h1>
             </header>
-            <main className="public__main">
+            <main className={`${Styles.public__main}`}>
                 <p>This is the landing page</p>
-                <address className="public__addr">
+                <address className={`${Styles.public__addr}`}>
                     
                 </address>
                 <br />
@@ -17,7 +18,7 @@ const Public = () => {
             <footer>
                 <Link to="/login">Employee Login</Link>
             </footer>
-        </section>
+        </div>
 
     )
     return content

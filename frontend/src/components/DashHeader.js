@@ -11,13 +11,17 @@ import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { useSendLogoutMutation } from '../features/auth/authApiSlice'
 import useAuth from '../hooks/useAuth'
 import PulseLoader from 'react-spinners/PulseLoader'
+import { Button } from "antd";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import Styles from './DashHeader.module.css';
 
 const DASH_REGEX = /^\/dash(\/)?$/
 const NOTES_REGEX = /^\/dash\/notes(\/)?$/
 const DRAFTS_REGEX = /^\/dash\/drafts(\/)?$/
 const USERS_REGEX = /^\/dash\/users(\/)?$/
 
-const DashHeader = () => {
+const DashHeader = ({collapse,changeCollapse}) => {
+
     const { isManager, isAdmin } = useAuth()
 
     const navigate = useNavigate()
@@ -43,14 +47,14 @@ const DashHeader = () => {
 
     let dashClass = null
     if (!DASH_REGEX.test(pathname) && !NOTES_REGEX.test(pathname) && !USERS_REGEX.test(pathname)) {
-        dashClass = "dash-header__container--small"
+        dashClass = "dash_header__container__small"
     }
 
     let newNoteButton = null
     if (NOTES_REGEX.test(pathname)) {
         newNoteButton = (
             <button
-                className="icon-button"
+                className={`${Styles.icon_button}`}
                 title="New Note"
                 onClick={onNewNoteClicked}
             >
@@ -63,7 +67,7 @@ const DashHeader = () => {
     if (NOTES_REGEX.test(pathname)) {
         newDraftButton = (
             <button
-                className="icon-button"
+                className={`${Styles.icon_button}`}
                 title="New Draft"
                 onClick={onNewDraftClicked}
             >
@@ -76,7 +80,7 @@ const DashHeader = () => {
     if (USERS_REGEX.test(pathname)) {
         newUserButton = (
             <button
-                className="icon-button"
+                className={`${Styles.icon_button}`}
                 title="New User"
                 onClick={onNewUserClicked}
             >
@@ -90,7 +94,7 @@ const DashHeader = () => {
         if (!USERS_REGEX.test(pathname) && pathname.includes('/dash')) {
             userButton = (
                 <button
-                    className="icon-button"
+                    className={`${Styles.icon_button}`}
                     title="Users"
                     onClick={onUsersClicked}
                 >
@@ -104,7 +108,7 @@ const DashHeader = () => {
     if (!NOTES_REGEX.test(pathname) && pathname.includes('/dash')) {
         notesButton = (
             <button
-                className="icon-button"
+                className={`${Styles.icon_button}`}
                 title="Notes"
                 onClick={onNotesClicked}
             >
@@ -117,7 +121,7 @@ const DashHeader = () => {
     if (!NOTES_REGEX.test(pathname) && pathname.includes('/dash')) {
         draftsButton = (
             <button
-                className="icon-button"
+                className={`${Styles.icon_button}`}
                 title="Drafts"
                 onClick={onDraftsClicked}
             >
@@ -128,7 +132,7 @@ const DashHeader = () => {
 
     const logoutButton = (
         <button
-            className="icon-button"
+            className={`${Styles.icon_button}`}
             title="Logout"
             onClick={sendLogout}
         >
@@ -162,17 +166,17 @@ const DashHeader = () => {
     <>
       {/* <p className={errClass}>{error?.data?.message}</p> */}
 
-      <header className="dash-header">
-        <div className={`dash-header__container ${dashClass}`}>
+      <header className={`${Styles.dash_header}`}>
+        <div className={`${Styles.dash_header__container} ${Styles.dashClass}`}>
         <Button
           type="text"
           icon={collapse ? <MenuUnfoldOutlined className="menu_icon"/> : <MenuFoldOutlined className="menu_icon"/>}
           onClick={()=>changeCollapse()}
         />
           <Link to="/dash">
-            <h1 className="dash-header__title">Shri Dinesh Crane Services</h1>
+            <h1 className={`${Styles.dash_header__title}`}>Shri Dinesh Crane Services</h1>
           </Link>
-          <nav className="dash-header__nav">{buttonContent}</nav>
+          <nav className={`${Styles.dash_header__nav}`}>{buttonContent}</nav>
         </div>
       </header>
     </>

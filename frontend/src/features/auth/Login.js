@@ -9,6 +9,7 @@ import PulseLoader from "react-spinners/PulseLoader";
 import { Container } from "react-bootstrap";
 import { Row, Col, Form, Input, Button, Checkbox, Image } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import Styles from "./Login.module.css"
 const Login = () => {
   useTitle("Employee Login");
 
@@ -62,60 +63,7 @@ const Login = () => {
 
   if (isLoading) return <PulseLoader color={"#FFF"} />;
 
-  // const content = (
-  //   <section className="public">
-  //     <header>
-  //       <h1>Employee Login</h1>
-  //     </header>
-
-  //     <main className="login">
-  //       <p ref={errRef} className={errClass} aria-live="assertive">
-  //         {errMsg}
-  //       </p>
-
-  //       <form className="form" onSubmit={handleSubmit}>
-  //         <label htmlFor="username">Employee Id:</label>
-  //         <input
-  //           className="form__input"
-  //           type="text"
-  //           id="username"
-  //           ref={userRef}
-  //           value={username}
-  //           onChange={handleUserInput}
-  //           autoComplete="off"
-  //           required
-  //         />
-
-  //         <label htmlFor="password">Password:</label>
-  //         <input
-  //           className="form__input"
-  //           type="password"
-  //           id="password"
-  //           onChange={handlePwdInput}
-  //           value={password}
-  //           required
-  //         />
-  //         <button className="form__submit-button">Sign In</button>
-
-  //         <label htmlFor="persist" className="form__persist">
-  //           <input
-  //             type="checkbox"
-  //             className="form__checkbox"
-  //             id="persist"
-  //             onChange={handleToggle}
-  //             checked={persist}
-  //           />
-  //           Save login details
-  //         </label>
-  //       </form>
-  //     </main>
-  //     <footer>
-  //       <Link to="/">Back to Home</Link>
-  //     </footer>
-  //   </section>
-  // );
-
-  // return content
+  
   return (
     <Container className="w-100 h-100 m-0 p-0">
       <Row className="vw-100 vh-100">
@@ -126,7 +74,7 @@ const Login = () => {
             <p ref={errRef} className={errClass} aria-live="assertive">
               {errMsg}
             </p>
-            <Form className="login-form" onFinish={handleSubmit} labelAlign="vertical">
+            <Form className={`${Styles.login_form}`} onFinish={handleSubmit} labelAlign="vertical">
               <Form.Item
                 name="username"
                 rules={[
@@ -138,7 +86,7 @@ const Login = () => {
               >
                 <Input
                   prefix={<UserOutlined className="site-form-item-icon" />}
-                  className="form__input"
+                  className={`${Styles.form__input}`}
                   placeholder="Employee ID"
                   ref={userRef}
                   value={username}
@@ -156,7 +104,7 @@ const Login = () => {
               >
                 <Input.Password
                   prefix={<LockOutlined className="site-form-item-icon" />}
-                  className="form__input"
+                  className={`${Styles.form__input}`}
                   placeholder="Password"
                   value={password}
                   onChange={handlePwdInput}
@@ -171,7 +119,7 @@ const Login = () => {
                 <Button
                   type="primary"
                   htmlType="submit"
-                  className="align-self-center form__submit-button"
+                  className={`align-self-center ${Styles.form__submit_button}`}
                   onClick={handleSubmit}
                 >
                   Log in now
@@ -180,8 +128,8 @@ const Login = () => {
             </Form>
           </div>
         </Col>
-        <Col className="d-flex w-50 h-100 flex-column justify-content-center align-items-center login_2ndcol">
-            <Image preview={false} src="./img/clogo.png" className="login_2ndcol_img" width={`50%`} height={`95%`} />
+        <Col className={`d-flex w-50 h-100 flex-column justify-content-center align-items-center ${Styles.login_2ndcol}`}>
+            <Image preview={false} src="./img/clogo.png" className={`${Styles.login_2ndcol_img}`} width={`50%`} height={`95%`} />
         </Col>
       </Row>
     </Container>

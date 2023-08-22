@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import useAuth from "../../hooks/useAuth"
-
+import Styles from "./Draft.module.css"
 const EditDraftForm = ({ draft, users }) => {
 
     const { isManager, isAdmin } = useAuth()
@@ -81,7 +81,7 @@ const EditDraftForm = ({ draft, users }) => {
     if (isManager || isAdmin) {
         deleteButton = (
             <button
-                className="icon-button"
+                className={`${Styles.icon_button}`}
                 title="Delete"
                 onClick={onDeleteDraftClicked}
             >
@@ -99,7 +99,7 @@ const EditDraftForm = ({ draft, users }) => {
                     <h2>Edit Nraft #{draft.ticket}</h2>
                     <div className="form__action-buttons">
                         <button
-                            className="icon-button"
+                            className={`${Styles.icon_button}`}
                             title="Save"
                             onClick={onSaveDraftClicked}
                             disabled={!canSave}
