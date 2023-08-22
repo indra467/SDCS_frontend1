@@ -35,7 +35,7 @@ const Welcome = () => {
 
     // return content
     return(
-        <div className='bg-warning'>
+        <div className='bg-success'>
             
         </div>
     );

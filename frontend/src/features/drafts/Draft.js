@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from 'react-router-dom'
-import { useGetDraftsQuery } from './draftsApiSlice'
+import { useGetDraftsQuery } from './draftsApiSlice' 
 import { memo } from 'react'
 
 const Draft = ({ draftId }) => {
