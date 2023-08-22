@@ -5,11 +5,14 @@ import Login from './features/auth/Login';
 import DashLayout from './components/DashLayout'
 import Welcome from './features/auth/Welcome'
 import NotesList from './features/notes/NotesList'
+import DraftsList from './features/drafts/DraftsList'
 import UsersList from './features/users/UsersList'
 import EditUser from './features/users/EditUser'
 import NewUserForm from './features/users/NewUserForm'
 import EditNote from './features/notes/EditNote'
+import EditDraft from './features/drafts/EditDraft'
 import NewNote from './features/notes/NewNote'
+import NewDraft from './features/drafts/NewDraft'
 import Sales from './features/notes/Sales'
 import Prefetch from './features/auth/Prefetch'
 import PersistLogin from './features/auth/PersistLogin'
@@ -48,6 +51,13 @@ function App() {
                   <Route path=":id" element={<EditNote />} />
                   <Route path="new" element={<NewNote />} />
                   <Route path="sales" element={<Sales />} />
+                </Route>
+
+                <Route path="drafts">
+                  <Route index element={<DraftsList />} />
+                  <Route path=":id" element={<EditDraft />} />
+                  <Route path="new" element={<NewDraft />} />
+                 
                 </Route>
 
               </Route>{/* End Dash */}

@@ -14,6 +14,7 @@ import PulseLoader from 'react-spinners/PulseLoader'
 
 const DASH_REGEX = /^\/dash(\/)?$/
 const NOTES_REGEX = /^\/dash\/notes(\/)?$/
+const DRAFTS_REGEX = /^\/dash\/drafts(\/)?$/
 const USERS_REGEX = /^\/dash\/users(\/)?$/
 
 const DashHeader = () => {
@@ -34,8 +35,10 @@ const DashHeader = () => {
     }, [isSuccess, navigate])
 
     const onNewNoteClicked = () => navigate('/dash/notes/new')
+    const onNewDraftClicked = () => navigate('/dash/drafts/new')
     const onNewUserClicked = () => navigate('/dash/users/new')
     const onNotesClicked = () => navigate('/dash/notes')
+    const onDraftsClicked = () => navigate('/dash/drafts')
     const onUsersClicked = () => navigate('/dash/users')
 
     let dashClass = null
@@ -50,6 +53,19 @@ const DashHeader = () => {
                 className="icon-button"
                 title="New Note"
                 onClick={onNewNoteClicked}
+            >
+                <FontAwesomeIcon icon={faFileCirclePlus} />
+            </button>
+        )
+    }
+
+    let newDraftButton = null
+    if (NOTES_REGEX.test(pathname)) {
+        newDraftButton = (
+            <button
+                className="icon-button"
+                title="New Draft"
+                onClick={onNewDraftClicked}
             >
                 <FontAwesomeIcon icon={faFileCirclePlus} />
             </button>
@@ -97,6 +113,19 @@ const DashHeader = () => {
         )
     }
 
+    let draftsButton = null
+    if (!NOTES_REGEX.test(pathname) && pathname.includes('/dash')) {
+        draftsButton = (
+            <button
+                className="icon-button"
+                title="Drafts"
+                onClick={onDraftsClicked}
+            >
+                <FontAwesomeIcon icon={faFilePen} />
+            </button>
+        )
+    }
+
     const logoutButton = (
         <button
             className="icon-button"
@@ -116,8 +145,10 @@ const DashHeader = () => {
         buttonContent = (
             <>
                 {newNoteButton}
+                {newDraftButton}
                 {newUserButton}
                 {notesButton}
+                {draftsButton}
                 {userButton}
                 {logoutButton}
             </>

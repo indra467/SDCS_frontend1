@@ -22,8 +22,8 @@ const Sales_welcome = () => {
             <b className=" sort-list">Sort order list</b>
             <p><Link to="/dash/users">Deal Quality Calculation</Link></p>
             
-                <p><Link to="/dash/users">Manage Equipped Occupancy</Link></p>
-                <p><Link to="/dash/users/sales">Manage Work Order</Link></p>
+                <p><Link to="/dash/drafts">Manage Equipped Occupancy</Link></p>
+                <p><Link to="/dash/drafts/new">Manage Work Order</Link></p>
             </div>}
             
 
