@@ -3,7 +3,14 @@ const AutoIncrement = require('mongoose-sequence')(mongoose)
 
 const draftSchema = new mongoose.Schema(
     {
-       
+       machine_no: {
+        type: String,
+        required: true
+       },
+       current_location: {
+        type: String,
+        required: true
+       },
         c_name: {
             type: String,
             required: true
@@ -30,6 +37,10 @@ const draftSchema = new mongoose.Schema(
             required: true
         },
         mobilization_charges: {
+            type: Number,
+            required: true
+        },
+        demobilization_charges: {
             type: Number,
             required: true
         },

@@ -28,10 +28,10 @@ const getAllDrafts = async (req, res) => {
 // @route POST /notes
 // @access Private
 const createNewDraft = async (req, res) => {
-    const { user, c_name, site_location, order_duration, configuration, rental_charges, number_of_shifts, mobilization_charges, SDCS_poc, delivery_deadline, customer_poc, urgency } = req.body
+    const { user,machine_no, current_location,demobilization_charges, c_name, site_location, order_duration, configuration, rental_charges, number_of_shifts, mobilization_charges, SDCS_poc, delivery_deadline, customer_poc, urgency } = req.body
 
     // Confirm data
-    if (!user || !c_name|| !site_location|| !order_duration|| !configuration|| !rental_charges|| !number_of_shifts|| !mobilization_charges|| !SDCS_poc|| !delivery_deadline|| !customer_poc|| !urgency) {
+    if (!user ||!machine_no ||!current_location || !demobilization_charges||!c_name|| !site_location|| !order_duration|| !configuration|| !rental_charges|| !number_of_shifts|| !mobilization_charges|| !SDCS_poc|| !delivery_deadline|| !customer_poc|| !urgency) {
         return res.status(400).json({ message: 'All fields are required' })
     }
 
@@ -43,7 +43,7 @@ const createNewDraft = async (req, res) => {
     }*/
 
     // Create and store the new user 
-    const draft = await Draft.create({ user, c_name, site_location, order_duration, configuration, rental_charges, number_of_shifts, mobilization_charges, SDCS_poc, delivery_deadline, customer_poc, urgency })
+    const draft = await Draft.create({ user,machine_no, current_location,demobilization_charges, c_name, site_location, order_duration, configuration, rental_charges, number_of_shifts, mobilization_charges, SDCS_poc, delivery_deadline, customer_poc, urgency })
 
     if (draft) { // Created 
         return res.status(201).json({ message: 'New draft created' })
@@ -57,10 +57,10 @@ const createNewDraft = async (req, res) => {
 // @route PATCH /notes
 // @access Private
 const updateDraft = async (req, res) => {
-    const { id, user, c_name, site_location, order_duration, configuration, rental_charges, number_of_shifts, mobilization_charges, SDCS_poc, delivery_deadline, customer_poc, urgency } = req.body
+    const { id, user, machine_no, current_location,demobilization_charges, c_name, site_location, order_duration, configuration, rental_charges, number_of_shifts, mobilization_charges, SDCS_poc, delivery_deadline, customer_poc, urgency } = req.body
 
     // Confirm data
-    if (!id || !user || !c_name|| !site_location|| !order_duration|| !configuration|| !rental_charges|| !number_of_shifts|| !mobilization_charges|| !SDCS_poc|| !delivery_deadline|| !customer_poc|| !urgency) {
+    if (!id || !user || !machine_no ||!current_location || !demobilization_charges || !c_name|| !site_location|| !order_duration|| !configuration|| !rental_charges|| !number_of_shifts|| !mobilization_charges|| !SDCS_poc|| !delivery_deadline|| !customer_poc|| !urgency) {
         return res.status(400).json({ message: 'All fields are required' })
     }
 
@@ -80,6 +80,9 @@ const updateDraft = async (req, res) => {
     }*/
 
     draft.user = user
+    draft.machine_no= machine_no
+    draft.current_location= current_location
+    draft.demobilization_charges = demobilization_charges
 draft.c_name = c_name
 draft.site_location = site_location
 draft.order_duration = order_duration
