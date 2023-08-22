@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faFileCirclePlus,
     faFilePen,
@@ -154,24 +154,30 @@ const DashHeader = () => {
             </>
         )
     }
+  
 
-    const content = (
-        <>
-            <p className={errClass}>{error?.data?.message}</p>
 
-            <header className="dash-header">
-                <div className={`dash-header__container ${dashClass}`}>
-                    <Link to="/dash">
-                        <h1 className="dash-header__title">Shri Dinesh Crane Services</h1>
-                    </Link>
-                    <nav className="dash-header__nav">
-                        {buttonContent}
-                    </nav>
-                </div>
-            </header>
-        </>
-    )
 
-    return content
+  const content = (
+    <>
+      {/* <p className={errClass}>{error?.data?.message}</p> */}
+
+      <header className="dash-header">
+        <div className={`dash-header__container ${dashClass}`}>
+        <Button
+          type="text"
+          icon={collapse ? <MenuUnfoldOutlined className="menu_icon"/> : <MenuFoldOutlined className="menu_icon"/>}
+          onClick={()=>changeCollapse()}
+        />
+          <Link to="/dash">
+            <h1 className="dash-header__title">Shri Dinesh Crane Services</h1>
+          </Link>
+          <nav className="dash-header__nav">{buttonContent}</nav>
+        </div>
+      </header>
+    </>
+  );
+
+  return content;
 }
-export default DashHeader
+export default DashHeader;
