@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useGetDraftsQuery } from "./draftsApiSlice";
-import Draft from "./Draft";
 import useAuth from "../../hooks/useAuth";
 import useTitle from "../../hooks/useTitle";
 import PulseLoader from "react-spinners/PulseLoader";
@@ -119,13 +118,17 @@ const DraftsList = () => {
       ids?.length &&
       filteredIds.map((draftId) => ({
         key: draftId,
+        machine_no: entities[draftId].machine_no,
+        current_location: entities[draftId].current_location,
         c_name: entities[draftId].c_name,
+        
         site_location: entities[draftId].site_location,
         order_duration: entities[draftId].order_duration,
         configuration: entities[draftId].configuration,
         rental_charges: entities[draftId].rental_charges,
         number_of_shifts: entities[draftId].number_of_shifts,
         mobilization_charges: entities[draftId].mobilization_charges,
+        demobilization_charges: entities[draftId].demobilization_charges,
         SDCS_poc: entities[draftId].SDCS_poc,
         delivery_deadline: entities[draftId].delivery_deadline,
         customer_poc: entities[draftId].customer_poc,
