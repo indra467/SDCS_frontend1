@@ -15,10 +15,12 @@
   }
   
   .login_2ndcol{
-    background: linear-gradient(180deg, #41528C 8.65%, rgba(142, 93, 93, 0.00) 96.15%);
+    background: rgb(63,94,251);
+background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(0,0,0,1) 55%);
   }
   
   .login_2ndcol_img{
-    border-radius: 3.3rem;
+    margin-top: 20%;
+    border-radius: 1.3rem;
   }
   

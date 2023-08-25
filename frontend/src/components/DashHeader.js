@@ -172,6 +172,7 @@ const DashHeader = ({collapse,changeCollapse}) => {
           type="text"
           icon={collapse ? <MenuUnfoldOutlined className="menu_icon"/> : <MenuFoldOutlined className="menu_icon"/>}
           onClick={()=>changeCollapse()}
+          className="text-light"
         />
           <Link to="/dash">
             <h1 className={`${Styles.dash_header__title}`}>Shri Dinesh Crane Services</h1>

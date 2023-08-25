@@ -12,6 +12,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useTitle from "../hooks/useTitle";
+import Styles from './DashHeader.module.css'
 
 const { Sider } = Layout;
 const Sidebar = ({ collapse }) => {
@@ -94,7 +95,7 @@ const Sidebar = ({ collapse }) => {
     window.open("https://indra467.github.io/NLP-Implemented-Chatbot/")
   };
   return (
-    <Sider trigger={null} collapsible collapsed={collapse} breakpoint="lg" onBreakpoint={(broken)=>console.log(broken)} collapsedWidth={0}>
+    <Sider trigger={null} collapsible collapsed={collapse} breakpoint="lg" collapsedWidth={0}>
       <div className="company_logo mb-2">
         <img src="./img/SDG_Logo.png" className="w-100"></img>
       </div>

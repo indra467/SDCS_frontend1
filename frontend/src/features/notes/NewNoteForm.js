@@ -5,8 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave } from "@fortawesome/free-solid-svg-icons"
 import { STATUS } from "../../config/status"
 import { PERIOD } from "../../config/period"
+import { Button, Checkbox, Form, Input, Select } from "antd"
 
 const NewNoteForm = ({ users }) => {
+
+    const [form] = Form.useForm();
 
     const [addNewNote, {
         isLoading,
@@ -39,36 +42,33 @@ const NewNoteForm = ({ users }) => {
     const onTextChanged = e => setText(e.target.value)
     const onUserIdChanged = e => setUserId(e.target.value)
     
-    const onStatusChanged = e => setStatus(e.target.value)
-    const onPeriodChanged = e => setPeriod(e.target.value)
+    const onStatusChanged = e => setStatus(e)
+    const onPeriodChanged = e => setPeriod(e)
 
     const canSave = [title, text, status, userId, period].every(Boolean) && !isLoading
 
     const onSaveNoteClicked = async (e) => {
-        e.preventDefault()
         if (canSave) {
             await addNewNote({ user: userId, status, title, text, period })
         }
     }
     
     const options = Object.values(STATUS).map(status => {
-        return (
-            <option
-                key={status}
-                value={status}
-
-            > {status}</option >
-        )
+        const obj={
+                key: status,
+                label: status,
+                value: status
+            }
+        return obj;
     })
 
     const options2 = Object.values(PERIOD).map(period => {
-        return (
-            <option
-                key={period}
-                value={period}
-
-            > {period}</option >
-        )
+        const obj={
+            key: period,
+            label: period,
+            value: period
+            }
+        return obj;
     })
 
     const errClass = isError ? "errmsg" : "offscreen"
@@ -76,62 +76,25 @@ const NewNoteForm = ({ users }) => {
     const validTextClass = !text ? "form__input--incomplete" : ''
 
     const content = (
-        <>
+        <div className={`vh-100 p-4 rounded bg-light mx-5 my-4 text-dark`}>
             <p className={errClass}>{error?.data?.message}</p>
-
-            <form className="form" onSubmit={onSaveNoteClicked}>
-                <div className="form__title-row">
-                    <h2>Add New Order</h2>
-                    <div className="form__action-buttons">
-                        <button
-                            className="icon-button"
-                            title="Save"
-                            disabled={!canSave}
-                        >
-                            <FontAwesomeIcon icon={faSave} />
-                        </button>
-                    </div>
-                </div>
-                <label className="form__label" htmlFor="title">
-                    Order-id:</label>
-                <input
-                    className={`form__input ${validTitleClass}`}
-                    id="title"
-                    name="title"
-                    type="text"
-                    autoComplete="off"
-                    value={title}
-                    onChange={onTitleChanged}
-                />
-
-               
-
-                <label className="form__label form__checkbox-container" htmlFor="status">
-                    Status:</label>
-                <select
-                    id="status"
-                    name="status"
-                    className="form__select"
-                    value={status}
-                    onChange={onStatusChanged}
-                >
-                    {options}
-                </select>
-
-                <label className="form__label form__checkbox-container" htmlFor="period">
-                    Period:</label>
-                <select
-                    id="period"
-                    name="period"
-                    className="form__select"
-                    value={period}
-                    onChange={onPeriodChanged}
-                >
-                    {options2}
-                </select>
-
-            </form>
-        </>
+            <h2 className="p-3">Add New Order</h2>
+            <Form form={form} className="p-3" onFinish={onSaveNoteClicked}>
+                <Form.Item name="title" label="Order ID: " rules={[{required: true}]}>
+                    <Input className={`form__input ${validTitleClass}`} value={title} onChange={onTitleChanged}/>
+                </Form.Item>   
+                <Form.Item name="status" label="Status: " rules={[{required: true}]}>
+                    <Select options={options} value={status} onChange={onStatusChanged} className="form__select"/>
+                </Form.Item> 
+                <Form.Item name="period" label="Period: " rules={[{required: true}]}>
+                    <Select options={options2} value={period} onChange={onPeriodChanged} className="form__select"/>
+                </Form.Item> 
+                <Form.Item className="form__action-buttons">
+                    <Button htmlType="submit" disabled={!canSave} title="Save">Save</Button>
+                </Form.Item>
+            </Form>
+            
+        </div>
     )
 
     return content

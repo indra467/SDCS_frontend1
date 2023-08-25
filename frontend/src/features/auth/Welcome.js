@@ -3,7 +3,8 @@ import useAuth from '../../hooks/useAuth'
 import useTitle from '../../hooks/useTitle'
 import { Layout } from 'antd'
 import Sidebar from '../../components/Sidebar'
-
+import Styles from '../../components/DashHeader.module.css'
+import OperationDash from '../manage/OperationDash'
 const Welcome = () => {
 
     const { username, isManager, isAdmin, isSales_Employee } = useAuth()
@@ -35,8 +36,8 @@ const Welcome = () => {
 
     // return content
     return(
-        <div className='bg-success'>
-            
+        <div className={`vh-100 ${Styles.bg}`}>
+            <OperationDash/>
         </div>
     );
 }

@@ -45,7 +45,9 @@
 .ant-input{
   background: rgba(240, 237, 255, 0.80);
 }
-
+.krish{
+  overflow-y: scroll !important;
+}
 
 /* 
 || GENERAL STYLES

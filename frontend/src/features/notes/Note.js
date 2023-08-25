@@ -22,17 +22,10 @@ const Note = ({ noteId }) => {
         const handleEdit = () => navigate(`/dash/notes/${noteId}`)
 
         return (
-         
             <tr className="table__row">
-                
-                
                 <td className="table__cell note__title">{note.title}</td>
                 <td className="table__cell note__username">{note.period}</td>
                 <td className="table__cell note__username">{note.status}</td>
-                
-               
-
-                
             </tr>
         )
 

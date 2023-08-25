@@ -129,7 +129,7 @@ const Login = () => {
           </div>
         </Col>
         <Col className={`d-flex w-50 h-100 flex-column justify-content-center align-items-center ${Styles.login_2ndcol}`}>
-            <Image preview={false} src="./img/clogo.png" className={`${Styles.login_2ndcol_img}`} width={`50%`} height={`95%`} />
+            <Image preview={false} src="./img/SDG_Logo.png" className={` ${Styles.login_2ndcol_img}`} width={`50%`} height={`75%`} />
         </Col>
       </Row>
     </Container>

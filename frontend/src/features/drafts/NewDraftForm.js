@@ -149,7 +149,7 @@ const NewDraftForm = ({ users }) => {
   const validUrgencyClass = !urgency ? "form__input--incomplete" : "";
 
   const content = (
-    <Container className="bg-light h-100 text-dark rounded">
+    <Container className="bg-light my-5 h-100 text-dark rounded">
       <p className={errClass}>{error?.data?.message}</p>
       <h2>Add New Draft</h2>
       <Form form={form} className="" onFinish={onSaveDraftClicked}>

@@ -11,13 +11,11 @@ const DashLayout = () => {
     setCollapsed(!collapsed);
   }
   return (
-    <Layout className={`${Styles.container}`}>
+    <Layout className={`vh-100 ${Styles.container}`}>
       <Sidebar collapse={collapsed}/>
-      <Layout>
+      <Layout className={`${Styles.container} vh-100`}>
         <DashHeader collapse={collapsed} changeCollapse={changeCollapse}/>
-        <div className={`${Styles.dash_container} bg-dark`}>
           <Outlet />
-        </div>
         <DashFooter />
       </Layout>
     </Layout>
