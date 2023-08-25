@@ -75,7 +75,7 @@ const column = [
     key: "urgency",
     dataIndex: "urgency",
     title: "Urgency",
-  },
+  }
 ];
 const DraftsList = () => {
   useTitle("techNotes: Drafts List");
@@ -132,7 +132,7 @@ const DraftsList = () => {
         SDCS_poc: entities[draftId].SDCS_poc,
         delivery_deadline: entities[draftId].delivery_deadline,
         customer_poc: entities[draftId].customer_poc,
-        urgency: entities[draftId].urgency,
+        urgency: entities[draftId].urgency
       }));
 
     content = (

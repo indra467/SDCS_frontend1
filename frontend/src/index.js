@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { store } from './app/store'
 import { Provider } from 'react-redux'
+import "bootstrap/dist/css/bootstrap.min.css";
+import Alert from 'react-bootstrap/Alert';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

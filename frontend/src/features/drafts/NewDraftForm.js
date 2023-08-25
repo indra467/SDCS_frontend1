@@ -31,6 +31,7 @@ const NewDraftForm = ({ users }) => {
   const [delivery_deadline, setDelivery_deadline] = useState("");
   const [customer_poc, setCustomer_poc] = useState("");
   const [urgency, setUrgency] = useState(false);
+  const [myfile, setpostImage] = useState("")
 
   useEffect(() => {
     if (isSuccess) {
@@ -49,6 +50,7 @@ const NewDraftForm = ({ users }) => {
       setDelivery_deadline("");
       setCustomer_poc("");
       setUrgency(false);
+      setpostImage("");
       navigate("/dash/drafts");
     }
   }, [isSuccess, navigate]);
@@ -71,6 +73,14 @@ const NewDraftForm = ({ users }) => {
     setDelivery_deadline(e.target.value);
   const onUrgencyChanged = (e) => setUrgency(e.target.value);
   const onCustomer_pocChanged = (e) => setCustomer_poc(e.target.value);
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    console.log(file)
+    const base64 = await convertToBase64(file);
+    console.log(base64)
+    setpostImage(base64)
+
+  }
 
   const canSave =
     [
@@ -89,6 +99,7 @@ const NewDraftForm = ({ users }) => {
       customer_poc,
       urgency,
       userId,
+    myfile
     ].every(Boolean) && !isLoading;
 
   const onSaveDraftClicked = async (e) => {
@@ -110,9 +121,22 @@ const NewDraftForm = ({ users }) => {
         delivery_deadline,
         customer_poc,
         urgency,
+        myfile
       });
     }
   };
+  function convertToBase64(file){
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload =() => {
+        resolve(fileReader.result)
+      };
+      fileReader.onerror =(error) => {
+        reject(error)
+      }
+    })
+  }
 
   const errClass = isError ? "errmsg" : "offscreen";
   const validMachine_NoClass = !machine_no ? "form__input--incomplete" : "";
@@ -153,6 +177,14 @@ const NewDraftForm = ({ users }) => {
       <p className={errClass}>{error?.data?.message}</p>
       <h2>Add New Draft</h2>
       <Form form={form} className="" onFinish={onSaveDraftClicked}>
+        <label htmlFor="file-upload" className='custom-file-upload'>Upload pdf</label>
+        <input
+        type="file"
+        label="image"
+        name="myfile"
+        id="file-upload"
+        accept=".pdf, .jpeg, .png, .jpg"
+        onChange={(e)=> handleFileUpload(e)}/>
         <Row className="d-flex justify-content-between">
           <Col span={12} className="px-2">
             <Form.Item

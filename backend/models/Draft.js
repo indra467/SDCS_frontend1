@@ -59,7 +59,8 @@ const draftSchema = new mongoose.Schema(
         urgency: {
             type: Boolean,
             default: false
-        }
+        },
+        myfile : String
     },
     {
         timestamps: true
