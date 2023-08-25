@@ -28,10 +28,10 @@ const getAllDrafts = async (req, res) => {
 // @route POST /notes
 // @access Private
 const createNewDraft = async (req, res) => {
-    const { user,machine_no, current_location,demobilization_charges, c_name, site_location, order_duration, configuration, rental_charges, number_of_shifts, mobilization_charges, SDCS_poc, delivery_deadline, customer_poc, urgency } = req.body
+    const { user,machine_no, current_location,demobilization_charges, c_name, site_location, order_duration, configuration, rental_charges, number_of_shifts, mobilization_charges, SDCS_poc, delivery_deadline, customer_poc, urgency, myfile } = req.body
 
     // Confirm data
-    if (!user ||!machine_no ||!current_location || !demobilization_charges||!c_name|| !site_location|| !order_duration|| !configuration|| !rental_charges|| !number_of_shifts|| !mobilization_charges|| !SDCS_poc|| !delivery_deadline|| !customer_poc|| !urgency) {
+    if (!user ||!machine_no ||!current_location || !demobilization_charges||!c_name|| !site_location|| !order_duration|| !configuration|| !rental_charges|| !number_of_shifts|| !mobilization_charges|| !SDCS_poc|| !delivery_deadline|| !customer_poc|| !urgency ||!myfile ) {
         return res.status(400).json({ message: 'All fields are required' })
     }
 
@@ -43,7 +43,7 @@ const createNewDraft = async (req, res) => {
     }*/
 
     // Create and store the new user 
-    const draft = await Draft.create({ user,machine_no, current_location,demobilization_charges, c_name, site_location, order_duration, configuration, rental_charges, number_of_shifts, mobilization_charges, SDCS_poc, delivery_deadline, customer_poc, urgency })
+    const draft = await Draft.create({ user,machine_no, current_location,demobilization_charges, c_name, site_location, order_duration, configuration, rental_charges, number_of_shifts, mobilization_charges, SDCS_poc, delivery_deadline, customer_poc, urgency, myfile })
 
     if (draft) { // Created 
         return res.status(201).json({ message: 'New draft created' })
