@@ -2,6 +2,7 @@ import { useGetUsersQuery } from "./usersApiSlice"
 import User from './User'
 import useTitle from "../../hooks/useTitle"
 import PulseLoader from 'react-spinners/PulseLoader'
+import { Container } from "react-bootstrap"
 
 const UsersList = () => {
     useTitle('techNotes: Users List')
@@ -33,6 +34,7 @@ const UsersList = () => {
         const tableContent = ids?.length && ids.map(userId => <User key={userId} userId={userId} />)
 
         content = (
+            <Container className="vh-100 my-5">
             <table className="table table--users">
                 <thead className="table__thead">
                     <tr>
@@ -45,6 +47,7 @@ const UsersList = () => {
                     {tableContent}
                 </tbody>
             </table>
+            </Container>
         )
     }
 

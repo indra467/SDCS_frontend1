@@ -1,11 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAddNewDraftMutation } from "./draftsApiSlice";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSave } from "@fortawesome/free-solid-svg-icons";
-import { STATUS } from "../../config/status";
-import { PERIOD } from "../../config/period";
-import { Form, Input, Button, Select, Row, Col, Checkbox, Upload } from "antd";
+import { Form, Input, Button, Row, Col, Checkbox } from "antd";
 import { Container } from "react-bootstrap";
 
 const NewDraftForm = ({ users }) => {

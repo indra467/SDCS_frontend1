@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react"
 import { useAddNewUserMutation } from "./usersApiSlice"
 import { useNavigate } from "react-router-dom"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSave } from "@fortawesome/free-solid-svg-icons"
 import { ROLES } from "../../config/roles"
 import useTitle from "../../hooks/useTitle"
+import { Container } from "react-bootstrap"
+import { Form,Input,Button, Select } from "antd"
 
 const USER_REGEX = /^[A-z]{3,20}$/
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/
 
 const NewUserForm = () => {
+
+    
+    const [form] = Form.useForm();
     useTitle('techNotes: New User')
 
     const [addNewUser, {
@@ -63,16 +66,23 @@ const NewUserForm = () => {
             await addNewUser({ username, password, roles })
         }
     }
-
     const options = Object.values(ROLES).map(role => {
-        return (
-            <option
-                key={role}
-                value={role}
-
-            > {role}</option >
-        )
+        const obj={
+                key: role,
+                label: role,
+                value: role
+            }
+        return obj;
     })
+    // const options = Object.values(ROLES).map(role => {
+    //     return (
+    //         <option
+    //             key={role}
+    //             value={role}
+
+    //         > {role}</option >
+    //     )
+    // })
 
     const errClass = isError ? "errmsg" : "offscreen"
     const validUserClass = !validUsername ? 'form__input--incomplete' : ''
@@ -81,10 +91,24 @@ const NewUserForm = () => {
 
 
     const content = (
-        <>
+        <Container className="pt-3 vh-100 text-dark bg-light">
+            <h2 className="text-center">Add New User</h2>
             <p className={errClass}>{error?.data?.message}</p>
-
-            <form className="form" onSubmit={onSaveUserClicked}>
+            <Form form={form} className="p-3 " onFinish={onSaveUserClicked}>
+                <Form.Item name="username" label="Username [3-20 letters]: " rules={[{required: true}]}>
+                    <Input className={`form__input ${validUserClass}`} value={username} onChange={onUsernameChanged}/>
+                </Form.Item>   
+                <Form.Item name="password" label="Password [4-12 chars incl. !@#$%] : " rules={[{required: true}]}>
+                    <Input type="password" className={`form__input ${validPwdClass}`} value={password} onChange={onPasswordChanged}/>
+                </Form.Item> 
+                <Form.Item name="roles" label="Assigned Roles: " rules={[{required: true}]}>
+                    <Select options={options} className={`form__select ${validRolesClass}`} value={roles} onChange={onRolesChanged}/>
+                </Form.Item> 
+                <Form.Item className="form__action-buttons" >
+                    <Button htmlType="submit" disabled={!canSave} title="Save">Save</Button>
+                </Form.Item>
+            </Form>
+            {/* <form className="form" onSubmit={onSaveUserClicked}>
                 <div className="form__title-row">
                     <h2>New User</h2>
                     <div className="form__action-buttons">
@@ -134,8 +158,8 @@ const NewUserForm = () => {
                     {options}
                 </select>
 
-            </form>
-        </>
+            </form> */}
+        </Container>
     )
 
     return content

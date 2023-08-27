@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
 import useTitle from '../../hooks/useTitle'
-import { Layout } from 'antd'
-import Sidebar from '../../components/Sidebar'
 import Styles from '../../components/DashHeader.module.css'
 import OperationDash from '../manage/OperationDash'
 const Welcome = () => {

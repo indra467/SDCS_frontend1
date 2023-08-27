@@ -67,7 +67,7 @@ const NotesList = () => {
   }
 
   return (
-    <div className="overflow-hidden m-5 p-1 bg-white rounded border h-100 ">
+    <div className="mt-5 mx-5 p-1 bg-white rounded border h-100 krish">
       <div className="">{content}</div>
     </div>
   );

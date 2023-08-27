@@ -5,10 +5,12 @@ import useAuth from "../../hooks/useAuth";
 import useTitle from "../../hooks/useTitle";
 import PulseLoader from "react-spinners/PulseLoader";
 import { Table } from "antd";
+import { Container } from 'react-bootstrap';
 
 const column = [
   {
     key: "machine_no",
+    width:100,
     dataIndex: "machine_no",
     title: "Machine No.",
   }
@@ -59,12 +61,17 @@ const OperationDash = () => {
         machine_no: entities[draftId].machine_no,
         
       }));
-
+// console.log(tableContent)
     content = (
-      <>
+      <Container className=''>
         <h1>ORDER DESCRIPTION</h1>
-        <Table columns={column} dataSource={tableContent} />
-      </>
+        <div className='bg-light text-dark'>
+          {tableContent.map(list=>{
+            return (<div key={list.key}>{list.machine_no}</div>)
+          })}
+        </div>
+        {/* <Table columns={column} dataSource={tableContent} scroll={{y:300}}/> */}
+      </Container>
     );
   }
 

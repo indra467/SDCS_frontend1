@@ -13,7 +13,7 @@ const DashLayout = () => {
   return (
     <Layout className={`vh-100 ${Styles.container} overflow-hidden`}>
       <Sidebar collapse={collapsed}/>
-      <Layout className={`${Styles.container} vh-100 overflow-y-scroll`}>
+      <Layout className={`${Styles.container} vh-100 krish`}>
         <DashHeader collapse={collapsed} changeCollapse={changeCollapse}/>
           <Outlet />
         <DashFooter />
