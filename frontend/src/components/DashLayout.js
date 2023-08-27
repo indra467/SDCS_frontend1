@@ -11,9 +11,9 @@ const DashLayout = () => {
     setCollapsed(!collapsed);
   }
   return (
-    <Layout className={`vh-100 ${Styles.container}`}>
+    <Layout className={`vh-100 ${Styles.container} overflow-hidden`}>
       <Sidebar collapse={collapsed}/>
-      <Layout className={`${Styles.container} vh-100`}>
+      <Layout className={`${Styles.container} vh-100 overflow-y-scroll`}>
         <DashHeader collapse={collapsed} changeCollapse={changeCollapse}/>
           <Outlet />
         <DashFooter />

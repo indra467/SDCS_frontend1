@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave } from "@fortawesome/free-solid-svg-icons";
 import { STATUS } from "../../config/status";
 import { PERIOD } from "../../config/period";
-import { Form, Input, Button, Select, Row, Col, Checkbox } from "antd";
+import { Form, Input, Button, Select, Row, Col, Checkbox, Upload } from "antd";
 import { Container } from "react-bootstrap";
 
 const NewDraftForm = ({ users }) => {
@@ -97,9 +97,9 @@ const NewDraftForm = ({ users }) => {
       SDCS_poc,
       delivery_deadline,
       customer_poc,
-      urgency,
+      // urgency,
       userId,
-    myfile
+      myfile
     ].every(Boolean) && !isLoading;
 
   const onSaveDraftClicked = async (e) => {
@@ -173,24 +173,17 @@ const NewDraftForm = ({ users }) => {
   const validUrgencyClass = !urgency ? "form__input--incomplete" : "";
 
   const content = (
-    <Container className="bg-light my-5 h-100 text-dark rounded">
+    <Container className="bg-light text-dark rounded">
+      <h2 className="px-5 pt-5 pb-3 text-decoration-underline">Add New Draft</h2>
       <p className={errClass}>{error?.data?.message}</p>
-      <h2>Add New Draft</h2>
       <Form form={form} className="" onFinish={onSaveDraftClicked}>
-        <label htmlFor="file-upload" className='custom-file-upload'>Upload pdf</label>
-        <input
-        type="file"
-        label="image"
-        name="myfile"
-        id="file-upload"
-        accept=".pdf, .jpeg, .png, .jpg"
-        onChange={(e)=> handleFileUpload(e)}/>
+        
         <Row className="d-flex justify-content-between">
-          <Col span={12} className="px-2">
+          <Col span={11} className="px-2">
             <Form.Item
               label="Machine No.: "
-              labelCol={{ span: 7 }}
-              wrapperCol={{ span: 14 }}
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 12 }}
               rules={[{ required: true }]}
             >
               <Input
@@ -201,11 +194,11 @@ const NewDraftForm = ({ users }) => {
               />
             </Form.Item>
           </Col>
-          <Col span={12} className="px-2">
+          <Col span={11} className="px-2">
             <Form.Item
               label="Current Location: "
-              labelCol={{ span: 7 }}
-              wrapperCol={{ span: 14 }}
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 12 }}
               rules={[{ required: true }]}
             >
               <Input
@@ -218,11 +211,11 @@ const NewDraftForm = ({ users }) => {
           </Col>
         </Row>
         <Row className="d-flex justify-content-between">
-          <Col span={12} className="px-2">
+          <Col span={11} className="px-2">
             <Form.Item
               label="Customer Name: "
-              labelCol={{ span: 7 }}
-              wrapperCol={{ span: 14 }}
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 12 }}
               rules={[{ required: true }]}
             >
               <Input
@@ -233,11 +226,11 @@ const NewDraftForm = ({ users }) => {
               />
             </Form.Item>
           </Col>
-          <Col span={12} className="px-2">
+          <Col span={11} className="px-2">
             <Form.Item
               label="Site Location: "
-              labelCol={{ span: 7 }}
-              wrapperCol={{ span: 14 }}
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 12 }}
               rules={[{ required: true }]}
             >
               <Input
@@ -250,11 +243,11 @@ const NewDraftForm = ({ users }) => {
           </Col>
         </Row>
         <Row className="d-flex justify-content-between">
-          <Col span={12} className="px-2">
+          <Col span={11} className="px-2">
             <Form.Item
               label="Order Duration: "
-              labelCol={{ span: 7 }}
-              wrapperCol={{ span: 14 }}
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 12 }}
               rules={[{ required: true }]}
             >
               <Input
@@ -265,11 +258,11 @@ const NewDraftForm = ({ users }) => {
               />
             </Form.Item>
           </Col>
-          <Col span={12} className="px-2">
+          <Col span={11} className="px-2">
             <Form.Item
               label="Configuration: "
-              labelCol={{ span: 7 }}
-              wrapperCol={{ span: 14 }}
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 12 }}
               rules={[{ required: true }]}
             >
               <Input
@@ -282,11 +275,11 @@ const NewDraftForm = ({ users }) => {
           </Col>
         </Row>
         <Row className="d-flex justify-content-between">
-          <Col span={12} className="px-2">
+          <Col span={11} className="px-2">
             <Form.Item
               label="Rental Charges: "
-              labelCol={{ span: 7 }}
-              wrapperCol={{ span: 14 }}
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 12 }}
               rules={[{ required: true }]}
             >
               <Input
@@ -297,11 +290,11 @@ const NewDraftForm = ({ users }) => {
               />
             </Form.Item>
           </Col>
-          <Col span={12} className="px-2">
+          <Col span={11} className="px-2">
             <Form.Item
               label="Number Of Shifts: "
-              labelCol={{ span: 7 }}
-              wrapperCol={{ span: 14 }}
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 12 }}
               rules={[{ required: true }]}
             >
               <Input
@@ -314,11 +307,11 @@ const NewDraftForm = ({ users }) => {
           </Col>
         </Row>
         <Row className="d-flex justify-content-between">
-          <Col span={12} className="px-2">
+          <Col span={11} className="px-2">
             <Form.Item
               label="Mobilization Charges: "
-              labelCol={{ span: 7 }}
-              wrapperCol={{ span: 14 }}
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 12 }}
               rules={[{ required: true }]}
             >
               <Input
@@ -329,11 +322,11 @@ const NewDraftForm = ({ users }) => {
               />
             </Form.Item>
           </Col>
-          <Col span={12} className="px-2">
+          <Col span={11} className="px-2">
             <Form.Item
               label="Demobilization Charges: "
-              labelCol={{ span: 7 }}
-              wrapperCol={{ span: 14 }}
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 12 }}
               rules={[{ required: true }]}
             >
               <Input
@@ -346,11 +339,11 @@ const NewDraftForm = ({ users }) => {
           </Col>
         </Row>
         <Row className="d-flex justify-content-between">
-          <Col span={12} className="px-2">
+          <Col span={11} className="px-2">
             <Form.Item
               label="SDCS POC: "
-              labelCol={{ span: 7 }}
-              wrapperCol={{ span: 14 }}
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 12 }}
               rules={[{ required: true }]}
             >
               <Input
@@ -361,11 +354,11 @@ const NewDraftForm = ({ users }) => {
               />
             </Form.Item>
           </Col>
-          <Col span={12} className="px-2">
+          <Col span={11} className="px-2">
             <Form.Item
               label="Delivery deadline: "
-              labelCol={{ span: 7 }}
-              wrapperCol={{ span: 14 }}
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 12 }}
               rules={[{ required: true }]}
             >
               <Input
@@ -378,11 +371,11 @@ const NewDraftForm = ({ users }) => {
           </Col>
         </Row>
         <Row className="d-flex justify-content-between">
-          <Col span={12} className="px-2">
+          <Col span={11} className="px-2">
             <Form.Item
               label="Customer POC: "
-              labelCol={{ span: 7 }}
-              wrapperCol={{ span: 14 }}
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 12 }}
               rules={[{ required: true }]}
             >
               <Input
@@ -393,12 +386,19 @@ const NewDraftForm = ({ users }) => {
               />
             </Form.Item>
           </Col>
+          <Col span={11} className="px-2">
+            {/* <label htmlFor="file-upload" className='custom-file-upload'>Upload pdf</label>
+             */}
+            <Form.Item label="Upload Doc" htmlFor="file-upload" labelCol={{ span: 8 }} wrapperCol={{ span: 12 }} rules={[{ required: true }]}>
+              <input type="file" label="image" name="myfile" id="file-upload" accept=".pdf, .jpeg, .png, .jpg" onChange={(e)=> handleFileUpload(e)}/>
+            </Form.Item>
+        </Col>
         </Row>
-        <Col span={12} className="px-2">
+        <Col span={11} className="px-2">
           <Form.Item
             label="Mark as urgent"
-            labelCol={{ span: 7 }}
-            wrapperCol={{ span: 14 }}
+            labelCol={{ span: 8 }}
+            wrapperCol={{ span: 12 }}
           >
             <Checkbox
               className={`form__input ${validUrgencyClass} rounded`}
@@ -408,8 +408,9 @@ const NewDraftForm = ({ users }) => {
             />
           </Form.Item>
         </Col>
+        
         <Form.Item labelCol={{span: 7 }} wrapperCol={{ span: 14}} className="d-flex align-items-center justify-content-center">
-          <Button type="primary" disabled={!canSave} htmlType="submit" className="px-5 py-1 h5">
+          <Button type="primary" disabled={!canSave} htmlType="submit" className="px-5 py-1 h5 text-light">
             Save
           </Button>
         </Form.Item>
