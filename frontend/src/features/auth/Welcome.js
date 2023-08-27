@@ -7,7 +7,7 @@ import Styles from '../../components/DashHeader.module.css'
 import OperationDash from '../manage/OperationDash'
 const Welcome = () => {
 
-    const { username, isManager, isAdmin, isSales_Employee } = useAuth()
+    const { username, isManager, isAdmin, isSales_Employee, isOperation_Employee } = useAuth()
 
     useTitle(`techNotes: ${username}`)
 
