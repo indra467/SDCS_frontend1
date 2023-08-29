@@ -47,21 +47,19 @@ const NewUserForm = () => {
         }
     }, [isSuccess, navigate])
 
-    const onUsernameChanged = e => setUsername(e.target.value)
-    const onPasswordChanged = e => setPassword(e.target.value)
+    const onUsernameChanged = e => {setUsername(e.target.value)}
+    const onPasswordChanged = e => {setPassword(e.target.value)}
 
     const onRolesChanged = e => {
-        const values = Array.from(
-            e.target.selectedOptions, //HTMLCollection 
-            (option) => option.value
-        )
-        setRoles(values)
+        // console.log(e)
+        
+        setRoles(e)
     }
 
     const canSave = [roles.length, validUsername, validPassword].every(Boolean) && !isLoading
 
     const onSaveUserClicked = async (e) => {
-        e.preventDefault()
+        // e.preventDefault()
         if (canSave) {
             await addNewUser({ username, password, roles })
         }
