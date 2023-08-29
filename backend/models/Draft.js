@@ -60,7 +60,27 @@ const draftSchema = new mongoose.Schema(
             type: Boolean,
             default: false
         },
-        myfile : String
+        myfile : String,
+        SDG_id: {
+            type:String
+        },
+        client : {
+            type:String
+        },
+        current_location2: {
+            type: String
+        },
+        invoice_description:{
+            type: String
+        },
+        billing_period:{
+            type: String
+        },
+        remarks:{
+            type: String
+        },
+        myfile2: String,
+        myfile3: String
     },
     {
         timestamps: true

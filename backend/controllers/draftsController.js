@@ -31,7 +31,7 @@ const createNewDraft = async (req, res) => {
     const { user,machine_no, current_location,demobilization_charges, c_name, site_location, order_duration, configuration, rental_charges, number_of_shifts, mobilization_charges, SDCS_poc, delivery_deadline, customer_poc, urgency, myfile } = req.body
 
     // Confirm data
-    if (!user ||!machine_no ||!current_location || !demobilization_charges||!c_name|| !site_location|| !order_duration|| !configuration|| !rental_charges|| !number_of_shifts|| !mobilization_charges|| !SDCS_poc|| !delivery_deadline|| !customer_poc|| !urgency ||!myfile ) {
+    if (!user ||!machine_no ||!current_location || !demobilization_charges||!c_name|| !site_location|| !order_duration|| !configuration|| !rental_charges|| !number_of_shifts|| !mobilization_charges|| !SDCS_poc|| !delivery_deadline|| !customer_poc||!myfile ) {
         return res.status(400).json({ message: 'All fields are required' })
     }
 
@@ -57,10 +57,10 @@ const createNewDraft = async (req, res) => {
 // @route PATCH /notes
 // @access Private
 const updateDraft = async (req, res) => {
-    const { id, user, machine_no, current_location,demobilization_charges, c_name, site_location, order_duration, configuration, rental_charges, number_of_shifts, mobilization_charges, SDCS_poc, delivery_deadline, customer_poc, urgency } = req.body
+    const { id, user, machine_no, current_location,demobilization_charges, c_name, site_location, order_duration, configuration, rental_charges, number_of_shifts, mobilization_charges, SDCS_poc, delivery_deadline, customer_poc, urgency, SDG_id, client, current_location2, invoice_description, billing_period, remarks, myfile2 } = req.body
 
     // Confirm data
-    if (!id || !user || !machine_no ||!current_location || !demobilization_charges || !c_name|| !site_location|| !order_duration|| !configuration|| !rental_charges|| !number_of_shifts|| !mobilization_charges|| !SDCS_poc|| !delivery_deadline|| !customer_poc|| !urgency) {
+    if (!id || !user || !machine_no ||!current_location || !demobilization_charges || !c_name|| !site_location|| !order_duration|| !configuration|| !rental_charges|| !number_of_shifts|| !mobilization_charges|| !SDCS_poc|| !delivery_deadline|| !customer_poc||  !SDG_id || !client || !current_location2 || !invoice_description || !billing_period || !remarks || !myfile2) {
         return res.status(400).json({ message: 'All fields are required' })
     }
 
@@ -72,7 +72,7 @@ const updateDraft = async (req, res) => {
     }
 
     // Check for duplicate title
-    const duplicate = await Draft.findOne({ title }).collation({ locale: 'en', strength: 2 }).lean().exec()
+    const duplicate = await Draft.findOne({ c_name }).collation({ locale: 'en', strength: 2 }).lean().exec()
 
     // Allow renaming of the original note 
     /*if (duplicate && duplicate?._id.toString() !== id) {
@@ -94,6 +94,12 @@ draft.SDCS_poc = SDCS_poc
 draft.delivery_deadline = delivery_deadline
 draft.customer_poc = customer_poc
 draft.urgency = urgency
+draft.SDG_id = SDG_id
+draft.client = client
+draft.current_location2 = current_location2
+draft.invoice_description = invoice_description
+draft.billing_period = billing_period
+draft.remarks = remarks
 
     const updatedDraft = await draft.save()
 

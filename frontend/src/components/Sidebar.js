@@ -16,7 +16,7 @@ import Styles from './DashHeader.module.css'
 
 const { Sider } = Layout;
 const Sidebar = ({ collapse }) => {
-  const { username, isManager, isAdmin, isSales_Employee, isOperation_Employee } = useAuth();
+  const { username, isManager, isAdmin, isSales_Employee, isOperation_Employee, isBilling_Employee } = useAuth();
   const navigate = useNavigate();
   useTitle(`techNotes: ${username}`);
 
@@ -110,7 +110,7 @@ const Sidebar = ({ collapse }) => {
       <div className="px-4 d-flex flex-row align-items-center justify-content-start">
         <UserOutlined className="h5 pr-2" />
         {!collapse && <span className="h6 text-normal m-0">
-          {isAdmin ? "Admin" : isSales_Employee ? "Employee" : isOperation_Employee ? "Employee" : "Manager"}
+          {isAdmin ? "Admin" : isSales_Employee ? "Employee" : isOperation_Employee ? "Employee" : isBilling_Employee ? "Employee" : "Manager"}
         </span>}
       </div>
       <Menu

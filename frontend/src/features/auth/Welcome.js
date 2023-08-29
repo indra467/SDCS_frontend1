@@ -3,9 +3,10 @@ import useAuth from '../../hooks/useAuth'
 import useTitle from '../../hooks/useTitle'
 import Styles from '../../components/DashHeader.module.css'
 import OperationDash from '../manage/OperationDash'
+import DraftsList from '../drafts/DraftsList'
 const Welcome = () => {
 
-    const { username, isManager, isAdmin, isSales_Employee, isOperation_Employee } = useAuth()
+    const { username, isManager, isAdmin, isSales_Employee, isOperation_Employee, isBilling_Employee } = useAuth()
 
     useTitle(`techNotes: ${username}`)
 
@@ -13,7 +14,7 @@ const Welcome = () => {
     const today = new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'long' }).format(date)
 
     const content = (
-        <section className="welcome">
+        /*<section className="welcome">
 
             <h1>Welcome {username}!</h1>
             {(isSales_Employee || isAdmin) && <div className="left-sidebar">
@@ -21,22 +22,23 @@ const Welcome = () => {
                 <label Classname="Notifications"><p><Link to="/dash/users">Notifications</Link></p></label>
                 <p><Link to="/dash/notes/sales">Functions</Link></p>
             </div>}
-           {/* <p><Link to="/dash/notes">View techNotes</Link></p>
+           { <p><Link to="/dash/notes">View techNotes</Link></p>
 
-            <p><Link to="/dash/notes/new">Add New techNote</Link></p>*/}
+            <p><Link to="/dash/notes/new">Add New techNote</Link></p>}
 
             {(isManager || isAdmin) && <p><Link to="/dash/users">View User Settings</Link></p>}
 
             {(isManager || isAdmin) && <p><Link to="/dash/users/new">Add New User</Link></p>}
 
+        </section>*/
+        <section>
+{(isManager || isAdmin || isOperation_Employee || isBilling_Employee) && <div className={`vh-100 ${Styles.bg}`}>
+            <DraftsList/>
+        </div>}
         </section>
     )
 
-    // return content
-    return(
-        <div className={`vh-100 ${Styles.bg}`}>
-            <OperationDash/>
-        </div>
-    );
+     return content
+   
 }
 export default Welcome

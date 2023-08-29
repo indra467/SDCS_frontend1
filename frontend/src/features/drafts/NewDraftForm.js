@@ -47,7 +47,7 @@ const NewDraftForm = ({ users }) => {
       setCustomer_poc("");
       setUrgency(false);
       setpostImage("");
-      navigate("/dash/drafts");
+     // navigate("/dash/drafts");
     }
   }, [isSuccess, navigate]);
 
