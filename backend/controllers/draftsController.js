@@ -57,10 +57,10 @@ const createNewDraft = async (req, res) => {
 // @route PATCH /notes
 // @access Private
 const updateDraft = async (req, res) => {
-    const { id, user, machine_no, current_location,demobilization_charges, c_name, site_location, order_duration, configuration, rental_charges, number_of_shifts, mobilization_charges, SDCS_poc, delivery_deadline, customer_poc, urgency, SDG_id, client, current_location2, invoice_description, billing_period, remarks, myfile2 } = req.body
+    const { id, user, machine_no, current_location,demobilization_charges, c_name, site_location, order_duration, configuration, rental_charges, number_of_shifts, mobilization_charges, SDCS_poc, delivery_deadline, customer_poc, urgency, SDG_id, client, current_location2, invoice_description, billing_period, remarks, myfile2, myfile3 } = req.body
 
     // Confirm data
-    if (!id || !user || !machine_no ||!current_location || !demobilization_charges || !c_name|| !site_location|| !order_duration|| !configuration|| !rental_charges|| !number_of_shifts|| !mobilization_charges|| !SDCS_poc|| !delivery_deadline|| !customer_poc||  !SDG_id || !client || !current_location2 || !invoice_description || !billing_period || !remarks || !myfile2) {
+    if (!id || !user || !machine_no ||!current_location || !demobilization_charges || !c_name|| !site_location|| !order_duration|| !configuration|| !rental_charges|| !number_of_shifts|| !mobilization_charges|| !SDCS_poc|| !delivery_deadline|| !customer_poc||  !SDG_id || !client || !current_location2 || !invoice_description || !billing_period || !remarks ) {
         return res.status(400).json({ message: 'All fields are required' })
     }
 
@@ -100,6 +100,12 @@ draft.current_location2 = current_location2
 draft.invoice_description = invoice_description
 draft.billing_period = billing_period
 draft.remarks = remarks
+if(!myfile3){
+   draft.myfile2 = myfile2 
+}else{
+    draft.myfile3 = myfile3
+}
+
 
     const updatedDraft = await draft.save()
 

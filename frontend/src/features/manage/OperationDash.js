@@ -20,7 +20,7 @@ const OperationDash = () => {
   
   useTitle("techNotes: Drafts List");
 
-  const { username, isManager, isAdmin, isSales_Employee, isOperation_Employee } = useAuth();
+  const { username, isManager, isAdmin, isSales_Employee, isOperation_Employee, isBilling_Employee } = useAuth();
 
   const {
     data: drafts,
@@ -46,7 +46,7 @@ const OperationDash = () => {
     const { ids, entities } = drafts;
 
     let filteredIds;
-    if (isManager || isAdmin || isOperation_Employee) {
+    if (isManager || isAdmin || isOperation_Employee || isBilling_Employee) {
       filteredIds = [...ids];
     } else {
       filteredIds = ids.filter(

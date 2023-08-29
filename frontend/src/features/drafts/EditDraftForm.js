@@ -48,6 +48,7 @@ const EditDraftForm = ({ draft, users }) => {
   const[billing_period,setBilling_period]= useState(draft.billing_period);
   const[remarks,setRemarks]= useState(draft.remarks);
   const [myfile2, setpostImage] = useState("")
+  const [myfile3, setpostImage2] = useState("")
   //const [myfile, setpostImage] = useState(draft.myfile);
 /*const temp = `${draft.myfile}`
   const blob = new Blob([window.atob(temp)], {
@@ -55,8 +56,11 @@ const EditDraftForm = ({ draft, users }) => {
   });
   const link = document.createElement("a");
   link.href = window.URL.createObjectURL(blob)*/
+  
   function downloadPDF(pdf) {
+
     const linksource = draft.myfile;
+   
     const link = document.createElement("a");
     const filename = `${draft.machine_no}.pdf`;
    link.href = linksource;
@@ -66,6 +70,33 @@ const EditDraftForm = ({ draft, users }) => {
 
    
  }
+
+ function downloadPDF2(pdf) {
+
+  const linksource = draft.myfile2;
+ 
+  const link = document.createElement("a");
+  const filename = `${draft.machine_no}.pdf`;
+ link.href = linksource;
+  link.download = filename;
+  link.click();
+  
+
+ 
+}
+function downloadPDF3(pdf) {
+
+  const linksource = draft.myfile3;
+ 
+  const link = document.createElement("a");
+  const filename = `${draft.machine_no}.pdf`;
+ link.href = linksource;
+  link.download = filename;
+  link.click();
+  
+
+ 
+}
  
 
   useEffect(() => {
@@ -92,6 +123,7 @@ const EditDraftForm = ({ draft, users }) => {
       setBilling_period("");
       setRemarks("");
       setpostImage("");
+      setpostImage2("");
       navigate("/dash/drafts");
     }
   }, [isSuccess, navigate]);
@@ -126,6 +158,14 @@ const EditDraftForm = ({ draft, users }) => {
       const base64 = await convertToBase64(file);
       console.log(base64)
       setpostImage(base64)
+  
+    }
+    const handleFileUpload3 = async (e) => {
+      const file = e.target.files[0];
+      console.log(file)
+      const base64 = await convertToBase64(file);
+      console.log(base64)
+      setpostImage2(base64)
   
     }
 
@@ -177,7 +217,8 @@ const EditDraftForm = ({ draft, users }) => {
                 invoice_description,
                 billing_period,
                 remarks,
-                myfile2})
+                myfile2, 
+                myfile3})
         }
     }
     function convertToBase64(file){
@@ -262,9 +303,12 @@ const EditDraftForm = ({ draft, users }) => {
     const content = ( <Container className="bg-light text-dark rounded">
     <h2 className="px-5 pt-5 pb-3 text-decoration-underline">Add New Draft</h2>
     <p className={errClass}>{error?.data?.message}</p>
-    <iframe src = {draft.myfile} ></iframe>
+    <iframe src = {draft.myfile} title="=MYFile1"></iframe>
     <button onClick={downloadPDF}>Download</button>
-    
+    {(isBilling_Employee||isAdmin) && <iframe src = {draft.myfile2} title="Myfile2"></iframe>} 
+    {(isBilling_Employee||isAdmin) && <button onClick={downloadPDF2}>Download</button>}
+    {(isAdmin) && <iframe src = {draft.myfile3} title="Myfile3"></iframe>} 
+    {(isAdmin) && <button onClick={downloadPDF3}>Download</button>}
     
     <Form form={form} className="" onFinish={onSaveDraftClicked}>
       
@@ -594,19 +638,29 @@ const EditDraftForm = ({ draft, users }) => {
         </Col>
       </Row>
 
-
+      {(isOperation_Employee) && 
       <Row className="d-flex justify-content-between">
          
           <Col span={11} className="px-2">
             {/* <label htmlFor="file-upload" className='custom-file-upload'>Upload pdf</label>
              */}
-            <Form.Item label="Upload Doc" htmlFor="file-upload" labelCol={{ span: 8 }} wrapperCol={{ span: 12 }} rules={[{ required: true }]}>
+            <Form.Item label="Upload Doc from operation section" htmlFor="file-upload" labelCol={{ span: 8 }} wrapperCol={{ span: 12 }} rules={[{ required: true }]}>
               <input type="file" label="image" name="myfile2" id="file-upload" accept=".pdf, .jpeg, .png, .jpg" onChange={(e)=> handleFileUpload(e)}/>
             </Form.Item>
         </Col>
-        </Row>
+        </Row>}
 
-
+        {(isBilling_Employee) && 
+      <Row className="d-flex justify-content-between">
+         
+          <Col span={11} className="px-2">
+            {/* <label htmlFor="file-upload" className='custom-file-upload'>Upload pdf</label>
+             */}
+            <Form.Item label="Upload Doc from billing section" htmlFor="file-upload" labelCol={{ span: 8 }} wrapperCol={{ span: 12 }} rules={[{ required: true }]}>
+              <input type="file" label="image" name="myfile3" id="file-upload" accept=".pdf, .jpeg, .png, .jpg" onChange={(e)=> handleFileUpload3(e)}/>
+            </Form.Item>
+        </Col>
+        </Row>}
 
 
 

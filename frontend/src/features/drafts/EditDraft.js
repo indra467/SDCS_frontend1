@@ -11,7 +11,7 @@ const EditDraft = () => {
 
     const { id } = useParams()
 
-    const { username, isManager, isAdmin , isOperation_Employee} = useAuth()
+    const { username, isManager, isAdmin , isOperation_Employee, isBilling_Employee} = useAuth()
 
     const { draft } = useGetDraftsQuery("draftsList", {
         selectFromResult: ({ data }) => ({
@@ -28,7 +28,7 @@ const EditDraft = () => {
     if (!draft || !users?.length) return <PulseLoader color={"#FFF"} />
 
 
-    if (!isManager && !isAdmin && !isOperation_Employee) {
+    if (!isManager && !isAdmin && !isOperation_Employee && !isBilling_Employee) {
         if (draft.username !== username) {
             return <p className="errmsg">No access</p>
         }

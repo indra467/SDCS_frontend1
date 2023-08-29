@@ -37,7 +37,7 @@ const DraftsList = () => {
     const { ids, entities } = drafts;
 
     let filteredIds;
-    if (isManager || isAdmin || isSales_Employee || isOperation_Employee||isBilling_Employee) {
+    if (isManager || isAdmin || isSales_Employee || isOperation_Employee|| isBilling_Employee) {
       filteredIds = [...ids];
     } else {
       filteredIds = ids.filter(

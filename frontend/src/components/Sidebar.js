@@ -89,6 +89,15 @@ const Sidebar = ({ collapse }) => {
       }
     ];
   }
+  else if (isBilling_Employee){
+    item = [
+      {
+        key: "1",
+        icon: <MailOutlined />,
+        label: "Message",
+      }
+    ];
+  }
 
   const open=(key)=>{
     if(key==2)
