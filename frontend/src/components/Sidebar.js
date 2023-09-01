@@ -86,6 +86,10 @@ const Sidebar = ({ collapse }) => {
         key: "1",
         icon: <MailOutlined />,
         label: "Message",
+      },
+      {
+        key: "6",
+        label: "Maintenance",
       }
     ];
   }
@@ -108,6 +112,8 @@ const Sidebar = ({ collapse }) => {
     navigate("/dash/users")
     else if(key==5)
     navigate("/dash/users/new")
+    else if(key==6)
+    navigate("/dash/mentos")
     else if(key==1)
     window.open("https://indra467.github.io/NLP-Implemented-Chatbot/")
   };
