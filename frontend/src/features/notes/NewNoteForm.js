@@ -73,7 +73,8 @@ const NewNoteForm = ({ users }) => {
 
     const errClass = isError ? "errmsg" : "offscreen"
     const validTitleClass = !title ? "form__input--incomplete" : ''
-    const validTextClass = !text ? "form__input--incomplete" : ''
+    const validStatusClass = !status ? "form__input--incomplete" : ''
+    const validPeriodClass = !period ? "form__input--incomplete" : ''
 
     const content = (
         <div className={`vh-100 p-4 rounded bg-light mx-5 my-4 text-dark`}>
@@ -84,10 +85,10 @@ const NewNoteForm = ({ users }) => {
                     <Input className={`form__input ${validTitleClass}`} value={title} onChange={onTitleChanged}/>
                 </Form.Item>   
                 <Form.Item name="status" label="Status: " rules={[{required: true}]}>
-                    <Select options={options} value={status} onChange={onStatusChanged} className="form__select"/>
+                    <Select options={options} value={status} onChange={onStatusChanged} className={`form__input ${validStatusClass}`}/>
                 </Form.Item> 
                 <Form.Item name="period" label="Period: " rules={[{required: true}]}>
-                    <Select options={options2} value={period} onChange={onPeriodChanged} className="form__select"/>
+                    <Select options={options2} value={period} onChange={onPeriodChanged} className={`form__input ${validPeriodClass}`}/>
                 </Form.Item> 
                 <Form.Item className="form__action-buttons">
                     <Button htmlType="submit" disabled={!canSave} title="Save">Save</Button>

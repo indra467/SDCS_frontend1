@@ -8,10 +8,10 @@ import {
   Row,
   Col,
   Checkbox,
-  Select,
-  DatePicker,
 } from "antd";
 import { Container } from "react-bootstrap";
+import { faL } from "@fortawesome/free-solid-svg-icons";
+import TextArea from "antd/es/input/TextArea";
 
 const MaintenanceForm = ({ users }) => {
   const [form] = Form.useForm();
@@ -28,14 +28,28 @@ const MaintenanceForm = ({ users }) => {
   const [location, setLocation] = useState("");
   const [country, setCountry] = useState("");
   const [craneType, setCraneType] = useState("");
-  const [hrsUp, setHrsUp] =useState("");
-  const [hrsUns, setHrsUns] =useState("");
-  const [tension, setTension]=useState(false);
-
+  const [hrsUp, setHrsUp] = useState("");
+  const [hrsUns, setHrsUns] = useState("");
+  const [tension, setTension] = useState(false);
+  const [tyrePress, setTyrePress] = useState(false);
+  const [tyreCond, setTyreCond] = useState(false);
+  const [cgs, setCgs] = useState(false);
   const [equipment, setEquipment] = useState("");
-  const [chEngineOil, setChEngineOil] = useState("");
-  const [chFuelFilter, setChFuelFilter] = useState("");
-  const [chPreFuelFilter, setChPreFuelFilter] = useState("");
+  const [chEngineOil, setChEngineOil] = useState(false);
+  const [chCoolant, setCoolant] = useState(false);
+  const [desEngineOil, setDesEngineOil] = useState(false);
+  const [pump, setPump] = useState(false);
+  const [winchesOil, setWinchesOil] = useState(false);
+  const [winchesRope, setWinchesRope] = useState(false);
+  const [winchesGrease, setWinchesGrease] = useState(false);
+  const [hydraulic, setHydraulic] = useState(false);
+  const [leakage, setLeakage] = useState(false);
+  const [centralGrease, setCentralGrease] = useState(false);
+  const [lastMaint, setLastMaint] = useState("");
+  const [type, setType] = useState("");
+  const [remarks, setRemarks] = useState("");
+  const [gendate, setGenDate] = useState("");
+  const [gentime, setGenTime] = useState("");
   const [userId, setUserId] = useState(users[0].id);
   const [myfile, setpostImage] = useState("");
 
@@ -51,28 +65,43 @@ const MaintenanceForm = ({ users }) => {
       setHrsUp("");
       setHrsUns("");
       setTension(false);
-
+      setTyrePress(false);
+      setTyreCond(false);
+      setCgs(false);
       setEquipment("");
-      setChEngineOil("");
-      setChFuelFilter("");
-      setChPreFuelFilter("");
+      setChEngineOil(false);
+      setCoolant(false);
+      setDesEngineOil(false);
+      setPump(false);
+      setWinchesOil(false);
+      setWinchesRope(false);
+      setWinchesGrease(false);
+      setHydraulic(false);
+      setLeakage(false);
+      setCentralGrease(false);
+      setLastMaint("");
+      setType("");
+      setRemarks("");
+      setGenDate("");
+      setGenTime("");
       navigate("/dash/drafts");
     }
   }, [isSuccess, navigate]);
 
   const onOpName = (e) => setOpName(e.target.value);
   const onFleetNo = (e) => setFleetNo(e.target.value);
-  const onDate = (e, s) => {
-    console.log(s);
-    setDate(e);
-  };
+  const onDate = (e)=> setDate(e.target.value);
   const onWeek = (e) => setWeek(e.target.value);
   const onLocation = (e) => setLocation(e.target.value);
   const onCountry = (e) => setCountry(e.target.value);
   const onCraneType = (e) => setCraneType(e.target.value);
-  const onHrsUp = (e)=> setHrsUp(e.target.value);
-  const onHrsUns = (e)=> setHrsUns(e.target.value);
-  
+  const onHrsUp = (e) => setHrsUp(e.target.value);
+  const onHrsUns = (e) => setHrsUns(e.target.value);
+  const onLastMaint = (e) => setLastMaint(e.target.value);
+  const onType = (e) => setType(e.target.value);
+  const onRemark = (e) => setRemarks(e.target.value);
+  const onGenDate = (e) => setGenDate(e.target.value);
+  const onGenTime = (e) => setGenTime(e.target.value);
   const onEquipment = (e) => setEquipment(e);
 
   const handleFileUpload = async (e) => {
@@ -95,8 +124,25 @@ const MaintenanceForm = ({ users }) => {
       hrsUp,
       hrsUns,
       tension,
-      equipment,
+      tyrePress,
+      tyreCond,
+      cgs,
+      chCoolant,
       chEngineOil,
+      desEngineOil,
+      pump,
+      winchesOil,
+      winchesRope,
+      winchesGrease,
+      hydraulic,
+      leakage,
+      centralGrease,
+      lastMaint,
+      type,
+      remarks,
+      gendate,
+      gentime,
+      equipment,
     ].every(Boolean) && !isLoading;
 
   const onSaveDraftClicked = async (e) => {
@@ -113,6 +159,24 @@ const MaintenanceForm = ({ users }) => {
         hrsUp,
         hrsUns,
         tension,
+        tyrePress,
+        tyreCond,
+        cgs,
+        chEngineOil,
+        chCoolant,
+        desEngineOil,
+        pump,
+        winchesOil,
+        winchesRope,
+        winchesGrease,
+        hydraulic,
+        leakage,
+        centralGrease,
+        lastMaint,
+        type,
+        remarks,
+        gendate,
+        gentime,
         equipment,
       });
     }
@@ -158,69 +222,6 @@ const MaintenanceForm = ({ users }) => {
         className="px-5"
         onFinish={onSaveDraftClicked}
       >
-        {
-          // (
-          /* <Row className="d-flex justify-content-between">
-          <Col span={6} className="px-2">
-            <Form.Item
-              label="Serial No: "
-              labelCol={{ span: 11 }}
-              wrapperCol={{ span: 7 }}
-              rules={[{ required: true }]}
-            >
-              <Input
-                className={`form__input ${validSl_NoClass} rounded`}
-                name="sl_no"
-                value={sl_no}
-                onChange={onSl_no}
-              />
-            </Form.Item>
-          </Col>
-          <Col span={8} className="px-2">
-            <Form.Item
-              label="Type: "
-              labelCol={{ span: 7 }}
-              wrapperCol={{ span: 12 }}
-              rules={[{ required: true }]}
-            >
-              <Select options={options}
-                className={`form__input ${validTypeClass} rounded`}
-                name="type"
-                value={type}
-                onChange={onType}
-              />
-            </Form.Item>
-          </Col>
-          <Col span={10} className="px-2">
-            <Form.Item
-              label="Equipment No: "
-              labelCol={{ span: 8 }}
-              wrapperCol={{ span: 10 }}
-              rules={[{ required: true }]}
-            >
-              <Input
-                className={`form__input ${validEquipmentClass} rounded`}
-                name="sl_no"
-                value={sl_no}
-                onChange={onEquipment}
-              />
-            </Form.Item>
-          </Col>
-        </Row>
-        <h4 className="px-3 pb-2 text-dark">Engine</h4>
-        <Row className="px-5 d-flex flex-row justify-content-between ">
-          <Form.Item label="Change Oil Filter: ">
-            <Input name="chEngineOil" value={chEngineOil} onChange={()=>setChEngineOil(!chEngineOil)}/>
-          </Form.Item>
-          <Form.Item label="Change Fuel Filter: ">
-            <Checkbox name="chFuelFilter" checked={chFuelFilter} onChange={()=>setChFuelFilter(!chFuelFilter)}/>
-          </Form.Item>
-          <Form.Item label="Change pre-fuel Filter: ">
-            <Checkbox name="chPreFuelFilter" checked={chPreFuelFilter} onChange={()=>setChPreFuelFilter(!chPreFuelFilter)}/>
-          </Form.Item>
-        </Row> */
-          // )
-        }
         <Row className="d-flex justify-content-between">
           <Col span={12}>
             <Form.Item
@@ -263,7 +264,7 @@ const MaintenanceForm = ({ users }) => {
               wrapperCol={{ span: 20 }}
               label="Date: "
             >
-              <DatePicker
+              <Input
                 className={`form__input ${validDateClass} rounded`}
                 id="date"
                 name="date"
@@ -376,10 +377,333 @@ const MaintenanceForm = ({ users }) => {
             </Form.Item>
           </Col>
         </Row>
-        <Form.Item htmlFor="tension" className="d-flex align-items-center gap-5"> 
-          <Checkbox id="tension" name="tension" checked={tension} onChange={()=>setTension(!tension)}/>
+        <hr className="px-5" />
+        <Form.Item htmlFor="tension" className="d-flex align-items-center">
+          <Checkbox
+            id="tension"
+            name="tension"
+            checked={tension}
+            onChange={() => setTension(!tension)}
+          />
+          <span className="ml-3">Check Track Tension</span>
+        </Form.Item>
+        <Form.Item htmlFor="tension" className="d-flex align-items-center">
+          <Checkbox
+            id="tension"
+            name="tension"
+            checked={tension}
+            onChange={() => setTension(!tension)}
+          />
           <span className="ml-3">Check Crane Tension</span>
         </Form.Item>
+        <Form.Item htmlFor="tension" className="d-flex align-items-center">
+          <Checkbox
+            id="tension"
+            name="tension"
+            checked={tension}
+            onChange={() => setTension(!tension)}
+          />
+          <span className="ml-3">Check Crane Tension</span>
+        </Form.Item>
+        <Form.Item htmlFor="tension" className="d-flex align-items-center">
+          <Checkbox
+            id="tension"
+            name="tension"
+            checked={tension}
+            onChange={() => setTension(!tension)}
+          />
+          <span className="ml-3">Check Crane Tension</span>
+        </Form.Item>
+        <Form.Item htmlFor="tyrePressure" className="d-flex align-items-center">
+          <Checkbox
+            id="tyrePressure"
+            name="tyrePressure"
+            checked={tyrePress}
+            onChange={() => setTyrePress(!tyrePress)}
+          />
+          <span className="ml-3">Check Tyre Pressure</span>
+        </Form.Item>
+        <Form.Item htmlFor="tyreCond" className="d-flex align-items-center">
+          <Checkbox
+            id="tyreCond"
+            name="tyreCond"
+            checked={tyreCond}
+            onChange={() => setTyreCond(!tyreCond)}
+          />
+          <span className="ml-3">Check Tyre Condition</span>
+        </Form.Item>
+        <Form.Item htmlFor="cgs" className="d-flex align-items-center">
+          <Checkbox
+            id="cgs"
+            name="cgs"
+            checked={cgs}
+            onChange={() => setCgs(!cgs)}
+          />
+          <span className="ml-3">Check level of Central Greasing System</span>
+        </Form.Item>
+        <Form.Item htmlFor="chEngineOil" className="d-flex align-items-center">
+          <Checkbox
+            id="chEngineOil"
+            name="chEngineOil"
+            checked={chEngineOil}
+            onChange={() => setChEngineOil(!chEngineOil)}
+          />
+          <span className="ml-3">Check oil level lower engine</span>
+        </Form.Item>
+        <Form.Item htmlFor="coolant" className="d-flex align-items-center">
+          <Checkbox
+            id="coolant"
+            name="coolant"
+            checked={chCoolant}
+            onChange={() => setCoolant(!chCoolant)}
+          />
+          <span className="ml-3">Check coolant lower engine</span>
+        </Form.Item>
+        <hr className="px-5" />
+        <h2>Crane Superstructure</h2>
+        <Form.Item htmlFor="desEngineOil" className="d-flex align-items-center">
+          <Checkbox
+            id="desEngineOil"
+            name="desEngineOil"
+            checked={desEngineOil}
+            onChange={() => setDesEngineOil(!desEngineOil)}
+          />
+          <span className="ml-3">Design engines oil level check</span>
+        </Form.Item>
+        <Form.Item htmlFor="desEngineOil" className="d-flex align-items-center">
+          <Checkbox
+            id="desEngineOil"
+            name="desEngineOil"
+            checked={desEngineOil}
+            onChange={() => setDesEngineOil(!desEngineOil)}
+          />
+          <span className="ml-3">Design engines oil level check</span>
+        </Form.Item>
+        <Form.Item htmlFor="pump" className="d-flex align-items-center">
+          <Checkbox
+            id="pump"
+            name="pump"
+            checked={pump}
+            onChange={() => setPump(!pump)}
+          />
+          <span className="ml-3">Pump distributer gearbox oil level check</span>
+        </Form.Item>
+        <Form.Item htmlFor="winchesOil" className="d-flex align-items-center">
+          <Checkbox
+            id="winchesOil"
+            name="winchesOil"
+            checked={winchesOil}
+            onChange={() => setWinchesOil(!winchesOil)}
+          />
+          <span className="ml-3">Winches oil level check</span>
+        </Form.Item>
+        <Form.Item htmlFor="winchesRope" className="d-flex align-items-center">
+          <Checkbox
+            id="winchesRope"
+            name="winchesRope"
+            checked={winchesRope}
+            onChange={() => setWinchesRope(!winchesRope)}
+          />
+          <span className="ml-3">Winches rope condition check</span>
+        </Form.Item>
+        <Form.Item
+          htmlFor="winchesGrease"
+          className="d-flex align-items-center"
+        >
+          <Checkbox
+            id="winchesGrease"
+            name="winchesGrease"
+            checked={winchesGrease}
+            onChange={() => setWinchesGrease(!winchesGrease)}
+          />
+          <span className="ml-3">Winches greased well check</span>
+        </Form.Item>
+        <Form.Item htmlFor="hydraulic" className="d-flex align-items-center">
+          <Checkbox
+            id="hydraulic"
+            name="hydraulic"
+            checked={hydraulic}
+            onChange={() => setHydraulic(!hydraulic)}
+          />
+          <span className="ml-3">Hydraulic system oil level check</span>
+        </Form.Item>
+        <hr />
+        <h2>General</h2>
+        <Form.Item htmlFor="leakage" className="d-flex align-items-center">
+          <Checkbox
+            id="leakage"
+            name="leakage"
+            checked={leakage}
+            onChange={() => setLeakage(!leakage)}
+          />
+          <span className="ml-3">Check for leakages</span>
+        </Form.Item>
+        <Form.Item
+          htmlFor="centralGrease"
+          className="d-flex align-items-center"
+        >
+          <Checkbox
+            id="centralGrease"
+            name="centralGrease"
+            checked={centralGrease}
+            onChange={() => setCentralGrease(!centralGrease)}
+          />
+          <span className="ml-3">Check level of central greasing </span>
+        </Form.Item>
+        <hr />
+        <h2>Maintenance</h2>
+        <Row>
+          <Col span={12}>
+            <Form.Item
+              htmlFor="lastMaint"
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              label="Last Maintenance Done: "
+            >
+              <Input
+                className={`form__input rounded`}
+                id="lastMaint"
+                name="lastMaint"
+                value={lastMaint}
+                onChange={onLastMaint}
+              />
+            </Form.Item>
+          </Col>
+
+          <Col span={12}>
+            <Form.Item
+              htmlFor="type"
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              label="Type A-B-C: "
+            >
+              <Input
+                className={`form__input rounded`}
+                id="type"
+                name="type"
+                value={type}
+                onChange={onType}
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={12}>
+            <Form.Item
+              htmlFor="gendate"
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              label="Date: "
+            >
+              <Input
+                className={`form__input rounded`}
+                id="gendate"
+                name="gendate"
+                value={gendate} 
+                onChange={onGenDate}
+              />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item
+              htmlFor="gentime"
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              label="Time: "
+            > 
+              <Input
+                className={`form__input rounded`}
+                id="gentime"
+                name="gentime"
+                value={gentime}
+                onChange={onGenTime}
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={12}>
+            <Form.Item
+              htmlFor="lastMaint"
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              label="Next Maintenance Done: "
+            >
+              <Input
+                className={`form__input rounded`}
+                id="lastMaint"
+                name="lastMaint"
+                value={lastMaint}
+                onChange={onLastMaint}
+              />
+            </Form.Item>
+          </Col>
+
+          <Col span={12}>
+            <Form.Item
+              htmlFor="type"
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              label="Type A-B-C: "
+            >
+              <Input
+                className={`form__input rounded`}
+                id="type"
+                name="type"
+                value={type}
+                onChange={onType}
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={12}>
+            <Form.Item
+              htmlFor="gendate"
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              label="Date: "
+            >
+              <Input
+                className={`form__input rounded`}
+                id="gendate"
+                name="gendate"
+                value={gendate} 
+                onChange={onGenDate}
+              />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item
+              htmlFor="gentime"
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              label="Time: "
+            > 
+              <Input
+                className={`form__input rounded`}
+                id="gentime"
+                name="gentime"
+                value={gentime}
+                onChange={onGenTime}
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Form.Item
+          htmlFor="remarks"
+          labelCol={{ span: 10 }}
+          wrapperCol={{ span: 22 }}
+          label="Overall Remarks: "
+        >
+          <TextArea
+            id="remarks"
+            name="remarks"
+            value={remarks}
+            onChange={onRemark}
+          />
+        </Form.Item>
+        
         <Form.Item
           labelCol={{ span: 10 }}
           wrapperCol={{ span: 20 }}
