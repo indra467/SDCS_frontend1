@@ -1,0 +1,27 @@
+.public{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-family: 'Nunito', sans-serif;
+  min-height: 100vh;
+  background-color: #0F172A;
+  color: aliceblue;
+  background-size: cover;
+  z-index: -4;
+}
+.public {
+    padding: 1em;
+    flex-grow: 1;
+}
+
+.public__main
+{
+    flex-grow: 1;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    padding: 1em 0;
+}
+
+.public__addr {
+    margin-top: 1em;
+}

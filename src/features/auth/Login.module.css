@@ -1,0 +1,25 @@
+.login_form {
+    max-width: 400px;
+    min-width: 50%;
+}
+.form__input
+{
+  border-radius: 8px;
+  background: rgba(240, 237, 255, 0.80);
+}
+
+.form__submit_button{
+    border-radius: 8px;
+    background: linear-gradient(134deg, #9181F4 0%, #5038ED 100%);
+    box-shadow: 0px 10.666666984558105px 28px 0px rgba(0, 0, 0, 0.16);
+  }
+  
+  .login_2ndcol{
+    background: black;
+  }
+  
+  .login_2ndcol_img{
+    margin-top: 20%;
+    border-radius: 1.3rem;
+  }
+  
