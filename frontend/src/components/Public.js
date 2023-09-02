@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 import Styles from "./Public.module.css"
 import { Container } from 'react-bootstrap'
+import Crane from './Crane.js'
 const Public = () => {
     const content = (
         <div className={`${Styles.public} m-0 p-0`}>
-            <header>
+            {/* <header>
                 <h1>SDCS <span className="nowrap">Cranes!</span></h1>
             </header>
             <main className={`${Styles.public__main}`}>
@@ -17,7 +18,8 @@ const Public = () => {
             </main>
             <footer>
                 <Link to="/login">Employee Login</Link>
-            </footer>
+            </footer> */}
+            <Crane />
         </div>
 
     )
