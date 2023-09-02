@@ -6,12 +6,15 @@ import DashLayout from './components/DashLayout'
 import Welcome from './features/auth/Welcome'
 import NotesList from './features/notes/NotesList'
 import DraftsList from './features/drafts/DraftsList'
+import MentosList from './features/mentos/MentosList'
 import UsersList from './features/users/UsersList'
 import EditUser from './features/users/EditUser'
 import NewUserForm from './features/users/NewUserForm'
 import EditNote from './features/notes/EditNote'
 import EditDraft from './features/drafts/EditDraft'
+import EditMento from './features/mentos/EditMento'
 import NewNote from './features/notes/NewNote'
+import NewMento from './features/mentos/NewMento'
 import NewDraft from './features/drafts/NewDraft'
 import Sales from './features/notes/Sales'
 import Prefetch from './features/auth/Prefetch'
@@ -57,6 +60,13 @@ function App() {
                   <Route index element={<DraftsList />} />
                   <Route path=":id" element={<EditDraft />} />
                   <Route path="new" element={<NewDraft />} />
+                 
+                </Route>
+
+                <Route path="mentos">
+                  <Route index element={<MentosList />} />
+                  <Route path=":id" element={<EditMento />} />
+                  <Route path="new" element={<NewMento />} />
                  
                 </Route>
 
