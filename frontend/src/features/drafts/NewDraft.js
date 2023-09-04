@@ -15,8 +15,8 @@ const NewDraft = () => {
 
     if (!users?.length) return <PulseLoader color={"#FFF"} />
 
-    // const content = <NewDraftForm users={users} />
-   const content = <NewDraftForm users={users}/>
+    const content = <MaintenanceForm users={users} />
+//    const content = <NewDraftForm users={users}/>
     return content
 }
 export default NewDraft

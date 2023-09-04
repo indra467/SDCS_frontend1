@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAddNewMentoMutation } from "./mentosApiSlice";
 import { Form, Input, Button, Row, Col, Checkbox } from "antd";
 import { Container } from "react-bootstrap";
+import TextArea from "antd/es/input/TextArea";
 
 const NewMentoForm = ({ users }) => {
   const [form] = Form.useForm();
@@ -178,14 +179,21 @@ central_greasing2
     <Container className="bg-light text-dark rounded">
       <h2 className="px-5 pt-5 pb-3 text-decoration-underline">Add New Machine for Maintenance</h2>
       <p className={errClass}>{error?.data?.message}</p>
-      <Form form={form} className="" onFinish={onSaveMentoClicked}>
-        
+      <h4 className="px-5 text-decoration-underline">
+        Crane Inspection Report
+      </h4>
+      <Form
+        form={form}
+        className="px-5"
+        onFinish={onSaveMentoClicked}
+        layout="vertical"
+      >        
       <Row className="d-flex justify-content-between">
         <Col span={11} className="px-2">
             <Form.Item
               label="Operator Name: "
-              labelCol={{ span: 8 }}
-              wrapperCol={{ span: 12 }}
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
               rules={[{ required: true }]}
             >
               <Input
@@ -200,8 +208,8 @@ central_greasing2
                 <Col span={11} className="px-2">
                 <Form.Item
                   label="Fleet Number: "
-                  labelCol={{ span: 8 }}
-                  wrapperCol={{ span: 12 }}
+                  labelCol={{ span: 10 }}
+                  wrapperCol={{ span: 20 }}
                   rules={[{ required: true }]}
                 >
                   <Input
@@ -217,8 +225,8 @@ central_greasing2
                 <Col span={11} className="px-2">
                 <Form.Item
                   label="Date: "
-                  labelCol={{ span: 8 }}
-                  wrapperCol={{ span: 12 }}
+                  labelCol={{ span: 10 }}
+                  wrapperCol={{ span: 20 }}
                   rules={[{ required: true }]}
                 >
                   <Input
@@ -233,8 +241,8 @@ central_greasing2
                 <Col span={11} className="px-2">
                 <Form.Item
                   label="Week"
-                  labelCol={{ span: 8 }}
-                  wrapperCol={{ span: 12 }}
+                  labelCol={{ span: 10 }}
+                  wrapperCol={{ span: 20 }}
                   rules={[{ required: true }]}
                 >
                   <Input
@@ -250,8 +258,8 @@ central_greasing2
                 <Col span={11} className="px-2">
                 <Form.Item
                   label="Location "
-                  labelCol={{ span: 8 }}
-                  wrapperCol={{ span: 12 }}
+                  labelCol={{ span: 10 }}
+                  wrapperCol={{ span: 20 }}
                   rules={[{ required: true }]}
                 >
                   <Input
@@ -266,8 +274,8 @@ central_greasing2
                 <Col span={11} className="px-2">
                 <Form.Item
                   label="Country"
-                  labelCol={{ span: 8 }}
-                  wrapperCol={{ span: 12 }}
+                  labelCol={{ span: 10 }}
+                  wrapperCol={{ span: 20 }}
                   rules={[{ required: true }]}
                 >
                   <Input
@@ -283,8 +291,8 @@ central_greasing2
                 <Col span={11} className="px-2">
                 <Form.Item
                   label="Hour ups "
-                  labelCol={{ span: 8 }}
-                  wrapperCol={{ span: 12 }}
+                  labelCol={{ span: 10 }}
+                  wrapperCol={{ span: 20 }}
                   rules={[{ required: true }]}
                 >
                   <Input
@@ -299,8 +307,8 @@ central_greasing2
                 <Col span={11} className="px-2">
                 <Form.Item
                   label="Hour uns "
-                  labelCol={{ span: 8 }}
-                  wrapperCol={{ span: 12 }}
+                  labelCol={{ span: 10 }}
+                  wrapperCol={{ span: 20 }}
                   rules={[{ required: true }]}
                 >
                   <Input
@@ -312,155 +320,324 @@ central_greasing2
             </Form.Item>
           </Col>
           </Row>
-          <Row className="d-flex justify-content-between">
-                <Col span={11} className="px-2">
-                <Form.Item
-                  label="Last maintenance done "
-                  labelCol={{ span: 8 }}
-                  wrapperCol={{ span: 12 }}
-                  rules={[{ required: true }]}
-                >
-                  <Input
-                    className={`form__input ${validFleet_numberClass} rounded`} 
-                    name="last_done"
+          <Form.Item htmlFor="tt_1" className="px-2 d-flex align-items-center">
+          <Checkbox
+            id="tt_1"
+            name="tt_1"
+            checked={tt_1}
+            onChange={() => setTt_1(!tt_1)}
+          />
+          <span className="ml-3">Check Track Tension</span>
+        </Form.Item>
+        <Form.Item htmlFor="tt_2" className="px-2 d-flex align-items-center">
+          <Checkbox
+            id="tt_2"
+            name="tt_2"
+            checked={tt_2}
+            onChange={() => setTt_2(!tt_2)}
+          />
+          <span className="ml-3">Check Track Tension</span>
+        </Form.Item>
+        <Form.Item htmlFor="tt_3" className="px-2 d-flex align-items-center">
+          <Checkbox
+            id="tt_3"
+            name="tt_3"
+            checked={tt_3}
+            onChange={() => setTt_3(!tt_3)}
+          />
+          <span className="ml-3">Check Track Tension</span>
+        </Form.Item>
+        <Form.Item htmlFor="tt_4" className="px-2 d-flex align-items-center">
+          <Checkbox
+            id="tt_4"
+            name="tt_4"
+            checked={tt_4}
+            onChange={() => setTt_4(!tt_4)}
+          />
+          <span className="ml-3">Check Track Tension</span>
+        </Form.Item>
+        <Form.Item htmlFor="tyre_p" className="d-flex align-items-center">
+          <Checkbox
+            id="tyre_p"
+            name="tyre_p"
+            checked={tyre_p}
+            onChange={() => setTyre_p(!tyre_p)}
+          />
+          <span className="ml-3">Check Tyre Pressure</span>
+        </Form.Item>
+        <Form.Item htmlFor="tyre_c" className="d-flex align-items-center">
+          <Checkbox
+            id="tyre_c"
+            name="tyre_c"
+            checked={tyre_c}
+            onChange={() => setTyre_c(!tyre_c)}
+          />
+          <span className="ml-3">Check Tyre Condition</span>
+        </Form.Item>
+        <Form.Item
+          htmlFor="centarl_greasing"
+          className="d-flex align-items-center"
+        >
+          <Checkbox
+            id="centarl_greasing"
+            name="centarl_greasing"
+            checked={centarl_greasing}
+            onChange={() => setCentarl_greasing(!centarl_greasing)}
+          />
+          <span className="ml-3">Check level of Central Greasing System</span>
+        </Form.Item>
+        <Form.Item htmlFor="lower_oil" className="d-flex align-items-center">
+          <Checkbox
+            id="lower_oil"
+            name="lower_oil"
+            checked={lower_oil}
+            onChange={() => setLower_oil(!lower_oil)}
+          />
+          <span className="ml-3">Check coolant lower engine</span>
+        </Form.Item>
+        <Form.Item
+          htmlFor="lower_coolant"
+          className="d-flex align-items-center"
+        >
+          <Checkbox
+            id="lower_coolant"
+            name="lower_coolant"
+            checked={lower_coolant}
+            onChange={() => setLower_coolant(!lower_coolant)}
+          />
+          <span className="ml-3">Check coolant lower engine</span>
+        </Form.Item>
+        <hr />
+        <h4 className="text-decoration-underline">Crane Superstructure</h4>
+        <Form.Item htmlFor="design_oil1" className="d-flex align-items-center">
+          <Checkbox
+            id="design_oil1"
+            name="design_oil1"
+            checked={design_oil1}
+            onChange={() => setDesign_oil1(!design_oil1)}
+          />
+          <span className="ml-3">Design engines oil level check</span>
+        </Form.Item>
+        <Form.Item htmlFor="design_oil2" className="d-flex align-items-center">
+          <Checkbox
+            id="design_oil2"
+            name="design_oil2"
+            checked={design_oil2}
+            onChange={() => setDesign_oil2(!design_oil2)}
+          />
+          <span className="ml-3">Design engines oil level check</span>
+        </Form.Item>
+        <Form.Item htmlFor="pump_oil" className="d-flex align-items-center">
+          <Checkbox
+            id="pump_oil"
+            name="pump_oil"
+            checked={pump_oil}
+            onChange={() => setPump_oil(!pump_oil)}
+          />
+          <span className="ml-3">Pump distributer gearbox oil level check</span>
+        </Form.Item>
+        <Form.Item htmlFor="winches_oil" className="d-flex align-items-center">
+          <Checkbox
+            id="winches_oil"
+            name="winches_oil"
+            checked={winches_oil}
+            onChange={() => setWinches_oil(!winches_oil)}
+          />
+          <span className="ml-3">Winches oil level check</span>
+        </Form.Item>
+        <Form.Item
+          htmlFor="winches_grease"
+          className="d-flex align-items-center"
+        >
+          <Checkbox
+            id="winches_grease"
+            name="winches_grease"
+            checked={winches_grease}
+            onChange={() => setWinches_grease(!winches_grease)}
+          />
+          <span className="ml-3">Winches greased well check</span>
+        </Form.Item>
+        <Form.Item
+          htmlFor="hydraulic_oil"
+          className="d-flex align-items-center"
+        >
+          <Checkbox
+            id="hydraulic_oil"
+            name="hydraulic_oil"
+            checked={hydraulic_oil}
+            onChange={() => setHydraulic_oil(!hydraulic_oil)}
+          />
+          <span className="ml-3">Hydraulic system oil level check</span>
+        </Form.Item>
+        <hr />
+        <h4 className="text-decoration-underline">General</h4>
+        <Form.Item htmlFor="leakage" className="d-flex align-items-center">
+          <Checkbox
+            id="leakage"
+            name="leakage"
+            checked={leakage}
+            onChange={() => setLeakage(!leakage)}
+          />
+          <span className="ml-3">Check for leakage</span>
+        </Form.Item>
+        <Form.Item
+          htmlFor="centarl_greasing2"
+          className="d-flex align-items-center"
+        >
+          <Checkbox
+            id="centarl_greasing2"
+            name="centarl_greasing2"
+            checked={central_greasing2}
+            onChange={() => setCentral_greasing2(!central_greasing2)}
+          />
+          <span className="ml-3">Check level of Central Greasing</span>
+        </Form.Item>
+        <hr />
+        <h4 className="text-decoration-underline">Maintenance</h4>
+        <Row className="d-flex justify-content-between">
+          <Col span={11} className="px-2">
+            <Form.Item
+              label="Last maintenance done "
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              rules={[{ required: true }]}
+            >
+              <Input
+                className={`form__input ${validFleet_numberClass} rounded`}
+                name="last_done"
                 value={last_done}
                 onChange={onLast_doneChanged}
               />
             </Form.Item>
           </Col>
-          </Row>
-          <Row className="d-flex justify-content-between">
-                <Col span={11} className="px-2">
-                <Form.Item
-                  label="Next maintenance "
-                  labelCol={{ span: 8 }}
-                  wrapperCol={{ span: 12 }}
-                  rules={[{ required: true }]}
-                >
-                  <Input
-                    className={`form__input ${validFleet_numberClass} rounded`} 
-                    name="next_done"
-                value={next_done}
-                onChange={onNext_doneChanged}
-              />
-            </Form.Item>
-          </Col>
-
-                <Col span={11} className="px-2">
-                <Form.Item
-                  label="Type A-B-C"
-                  labelCol={{ span: 8 }}
-                  wrapperCol={{ span: 12 }}
-                  rules={[{ required: true }]}
-                >
-                  <Input
-                    className={`form__input ${validFleet_numberClass} rounded`} 
-                    name="type1"
+          <Col span={11} className="px-2">
+            <Form.Item
+              label="Type A-B-C"
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              rules={[{ required: true }]}
+            >
+              <Input
+                className={`form__input ${validFleet_numberClass} rounded`}
+                name="type1"
                 value={type1}
                 onChange={onType1Changed}
               />
             </Form.Item>
           </Col>
-          </Row>
-          <Row className="d-flex justify-content-between">
-                <Col span={11} className="px-2">
-                <Form.Item
-                  label="Type A-B-C "
-                  labelCol={{ span: 8 }}
-                  wrapperCol={{ span: 12 }}
-                  rules={[{ required: true }]}
-                >
-                  <Input
-                    className={`form__input ${validFleet_numberClass} rounded`} 
-                    name="type2"
-                value={type2}
-                onChange={onType2Changed}
-              />
-            </Form.Item>
-          </Col>
-
-                <Col span={11} className="px-2">
-                <Form.Item
-                  label="Date "
-                  labelCol={{ span: 8 }}
-                  wrapperCol={{ span: 12 }}
-                  rules={[{ required: true }]}
-                >
-                  <Input
-                    className={`form__input ${validFleet_numberClass} rounded`} 
-                    name="date2"
+        </Row>
+        <Row className="d-flex justify-content-between">
+          <Col span={11} className="px-2">
+            <Form.Item
+              label="Date "
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              rules={[{ required: true }]}
+            >
+              <Input
+                className={`form__input ${validFleet_numberClass} rounded`}
+                name="date2"
                 value={date2}
                 onChange={onDate2Changed}
               />
             </Form.Item>
           </Col>
-          </Row>
-          <Row className="d-flex justify-content-between">
-                <Col span={11} className="px-2">
-                <Form.Item
-                  label="Date "
-                  labelCol={{ span: 8 }}
-                  wrapperCol={{ span: 12 }}
-                  rules={[{ required: true }]}
-                >
-                  <Input
-                    className={`form__input ${validFleet_numberClass} rounded`} 
-                    name="date3"
-                value={date3}
-                onChange={onDate3Changed}
-              />
-            </Form.Item>
-          </Col>
-
-                <Col span={11} className="px-2">
-                <Form.Item
-                  label="Hours "
-                  labelCol={{ span: 8 }}
-                  wrapperCol={{ span: 12 }}
-                  rules={[{ required: true }]}
-                >
-                  <Input
-                    className={`form__input ${validFleet_numberClass} rounded`} 
-                    name="hour2"
+          <Col span={11} className="px-2">
+            <Form.Item
+              label="Hours "
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              rules={[{ required: true }]}
+            >
+              <Input
+                className={`form__input ${validFleet_numberClass} rounded`}
+                name="hour2"
                 value={hour2}
                 onChange={onHour2Changed}
               />
             </Form.Item>
           </Col>
-          </Row>
-          <Row className="d-flex justify-content-between">
-                <Col span={11} className="px-2">
-                <Form.Item
-                  label="Hours "
-                  labelCol={{ span: 8 }}
-                  wrapperCol={{ span: 12 }}
-                  rules={[{ required: true }]}
-                >
-                  <Input
-                    className={`form__input ${validFleet_numberClass} rounded`} 
-                    name="hour3"
+        </Row>
+        <Row className="d-flex justify-content-between">
+          <Col span={11} className="px-2">
+            <Form.Item
+              label="Next maintenance "
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              rules={[{ required: true }]}
+            >
+              <Input
+                className={`form__input ${validFleet_numberClass} rounded`}
+                name="next_done"
+                value={next_done}
+                onChange={onNext_doneChanged}
+              />
+            </Form.Item>
+          </Col>
+          <Col span={11} className="px-2">
+            <Form.Item
+              label="Type A-B-C "
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              rules={[{ required: true }]}
+            >
+              <Input
+                className={`form__input ${validFleet_numberClass} rounded`}
+                name="type2"
+                value={type2}
+                onChange={onType2Changed}
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+
+        <Row className="d-flex justify-content-between">
+          <Col span={11} className="px-2">
+            <Form.Item
+              label="Date "
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              rules={[{ required: true }]}
+            >
+              <Input
+                className={`form__input ${validFleet_numberClass} rounded`}
+                name="date3"
+                value={date3}
+                onChange={onDate3Changed}
+              />
+            </Form.Item>
+          </Col>
+          <Col span={11} className="px-2">
+            <Form.Item
+              label="Hours "
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              rules={[{ required: true }]}
+            >
+              <Input
+                className={`form__input ${validFleet_numberClass} rounded`}
+                name="hour3"
                 value={hour3}
                 onChange={onHour3Changed}
               />
             </Form.Item>
           </Col>
+        </Row>
 
-                <Col span={11} className="px-2">
-                <Form.Item
-                  label="Oerall Remarks: "
-                  labelCol={{ span: 8 }}
-                  wrapperCol={{ span: 12 }}
-                  rules={[{ required: true }]}
-                >
-                  <Input
-                    className={`form__input ${validFleet_numberClass} rounded`} 
-                    name="overall"
-                value={overall}
-                onChange={onOverallChanged}
-              />
-            </Form.Item>
-          </Col>
-          </Row>
+        <Form.Item
+          label="Overall Remarks: "
+          labelCol={{ span: 10 }}
+          wrapperCol={{ span: 22 }}
+          rules={[{ required: true }]}
+          className="pl-2"
+        >
+          <TextArea
+            className={`form__input ${validFleet_numberClass} rounded`}
+            name="overall"
+            value={overall}
+            onChange={onOverallChanged}
+          />
+        </Form.Item>
           <Form.Item labelCol={{span: 7 }} wrapperCol={{ span: 14}} className="d-flex align-items-center justify-content-center">
           <Button type="primary" disabled={!canSave} htmlType="submit" className="px-5 py-1 h5 text-light">
             Save

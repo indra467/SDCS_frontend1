@@ -10,6 +10,10 @@
     font-size: 500px;
 }
 
+.notes_icon {
+    color: #fff;
+}
+
 .dash_header {
   position: sticky;
   top: 0;
