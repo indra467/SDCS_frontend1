@@ -3,6 +3,9 @@ import {
   useUpdateMentoMutation,
   useDeleteMentoMutation,
 } from "./mentosApiSlice";
+import {
+  useAddNewNotifMutation
+} from "./notifsApiSlice";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons";
@@ -19,6 +22,8 @@ const EditMentoForm = ({ mento, users }) => {
   const [updateMento, { isLoading, isSuccess, isError, error }] =
     useUpdateMentoMutation();
 
+    const [addNewNotif, { isSuccess: isnotSuccess, isError: isnotError, error: noterror }] =
+    useAddNewNotifMutation();
   const [
     deleteMento,
     { isSuccess: isDelSuccess, isError: isDelError, error: delerror },
@@ -153,6 +158,12 @@ const EditMentoForm = ({ mento, users }) => {
 
   const onSaveMentoClicked = async (e) => {
     if (canSave) {
+      await addNewNotif({
+        
+        user: userId,
+        fleet_number: mento.fleet_number,
+        description: "done",
+      });
       await updateMento({
         id: mento.id,
         user: userId,

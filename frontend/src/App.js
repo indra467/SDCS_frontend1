@@ -7,6 +7,7 @@ import Welcome from './features/auth/Welcome'
 import NotesList from './features/notes/NotesList'
 import DraftsList from './features/drafts/DraftsList'
 import MentosList from './features/mentos/MentosList'
+import NotifsList from './features/mentos/NotifsList'
 import UsersList from './features/users/UsersList'
 import EditUser from './features/users/EditUser'
 import NewUserForm from './features/users/NewUserForm'
@@ -54,6 +55,10 @@ function App() {
                   <Route path=":id" element={<EditNote />} />
                   <Route path="new" element={<NewNote />} />
                   <Route path="sales" element={<Sales />} />
+                </Route>
+
+                <Route path="notifs">
+                  <Route index element={<NotifsList />} />
                 </Route>
 
                 <Route path="drafts">

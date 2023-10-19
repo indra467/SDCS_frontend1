@@ -105,7 +105,7 @@ const Sidebar = ({ collapse }) => {
 
   const open=(key)=>{
     if(key==2)
-    navigate("/dash/users")
+    navigate("/dash/notifs")
     else if(key==3)
     navigate("/dash/notes/sales")
     else if(key==4)
