@@ -109,7 +109,7 @@ const EditMentoForm = ({ mento, users }) => {
       setHydraulic_oil(false);
       setLeakage(false);
       setCentral_greasing2(false);
-      navigate("/dash/drafts");
+      navigate("/dash/mentos");
     }
   }, [isSuccess, navigate]);
 
@@ -703,6 +703,12 @@ const EditMentoForm = ({ mento, users }) => {
             value={overall}
             onChange={onOverallChanged}
           />
+        </Form.Item>
+       
+          <Form.Item labelCol={{span: 7 }} wrapperCol={{ span: 14}} className="d-flex align-items-center justify-content-center">
+          <Button type="primary" disabled={!canSave} htmlType="submit" className="px-5 py-1 h5 text-light">
+            Save
+          </Button>
         </Form.Item>
       </Form>
     </Container>

@@ -13,79 +13,79 @@ const NewMentoForm = ({ users }) => {
 
   const navigate = useNavigate();
   const [userId, setUserId] = useState(users[0].id);
-  const [operator_name , setOperator_name] = useState("");
-const [fleet_number , setFleet_number] = useState("");
-const [date , setDate] = useState("");
-const [week , setWeek] = useState("");
-const [location , setLocation] = useState("");
-const [country , setCountry] = useState("");
-const [hr_up , setHr_up] = useState("");
-const [hr_uns , setHr_uns] = useState("");
-const [last_done , setLast_done] = useState("");
-const [next_done , setNext_done] = useState("");
-const [type1 , setType1] = useState("");
-const [type2 , setType2] = useState("");
-const [date2 , setDate2] = useState("");
-const [date3 , setDate3] = useState("");
-const [hour2 , setHour2] = useState("");
-const [hour3 , setHour3] = useState("");
-const [overall , setOverall] = useState("");
-const [tt_1 , setTt_1] = useState(false);
-const [tt_2 , setTt_2] = useState(false);
-const [tt_3 , setTt_3] = useState(false);
-const [tt_4 , setTt_4] = useState(false);
-const [tyre_p , setTyre_p] = useState(false);
-const [tyre_c , setTyre_c] = useState(false);
-const [centarl_greasing , setCentarl_greasing] = useState(false);
-const [lower_oil , setLower_oil] = useState(false);
-const [lower_coolant , setLower_coolant] = useState(false);
-const [design_oil1 , setDesign_oil1] = useState(false);
-const [design_oil2 , setDesign_oil2] = useState(false);
-const [pump_oil , setPump_oil] = useState(false);
-const [winches_oil , setWinches_oil] = useState(false);
-const [winches_grease , setWinches_grease] = useState(false);
-const [hydraulic_oil , setHydraulic_oil] = useState(false);
-const [leakage , setLeakage] = useState(false);
-const [central_greasing2 , setCentral_greasing2] = useState(false);
+  const [operator_name, setOperator_name] = useState("");
+  const [fleet_number, setFleet_number] = useState("");
+  const [date, setDate] = useState("");
+  const [week, setWeek] = useState("");
+  const [location, setLocation] = useState("");
+  const [country, setCountry] = useState("");
+  const [hr_up, setHr_up] = useState("");
+  const [hr_uns, setHr_uns] = useState("");
+  const [last_done, setLast_done] = useState("");
+  const [next_done, setNext_done] = useState("");
+  const [type1, setType1] = useState("");
+  const [type2, setType2] = useState("");
+  const [date2, setDate2] = useState("");
+  const [date3, setDate3] = useState("");
+  const [hour2, setHour2] = useState("");
+  const [hour3, setHour3] = useState("");
+  const [overall, setOverall] = useState("");
+  const [tt_1, setTt_1] = useState(false);
+  const [tt_2, setTt_2] = useState(false);
+  const [tt_3, setTt_3] = useState(false);
+  const [tt_4, setTt_4] = useState(false);
+  const [tyre_p, setTyre_p] = useState(false);
+  const [tyre_c, setTyre_c] = useState(false);
+  const [centarl_greasing, setCentarl_greasing] = useState(false);
+  const [lower_oil, setLower_oil] = useState(false);
+  const [lower_coolant, setLower_coolant] = useState(false);
+  const [design_oil1, setDesign_oil1] = useState(false);
+  const [design_oil2, setDesign_oil2] = useState(false);
+  const [pump_oil, setPump_oil] = useState(false);
+  const [winches_oil, setWinches_oil] = useState(false);
+  const [winches_grease, setWinches_grease] = useState(false);
+  const [hydraulic_oil, setHydraulic_oil] = useState(false);
+  const [leakage, setLeakage] = useState(false);
+  const [central_greasing2, setCentral_greasing2] = useState(false);
 
   useEffect(() => {
     if (isSuccess) {
       setOperator_name("");
       setUserId("");
-setFleet_number("");
-setDate("");
-setWeek("");
-setLocation("");
-setCountry("");
-setHr_up("");
-setHr_uns("");
-setLast_done("");
-setNext_done("");
-setType1("");
-setType2("");
-setDate2("");
-setDate3("");
-setHour2("");
-setHour3("");
-setOverall("");
-setTt_1(false);
-setTt_2(false);
-setTt_3(false);
-setTt_4(false);
-setTyre_p(false);
-setTyre_c(false);
-setCentarl_greasing(false);
-setLower_oil(false);
-setLower_coolant(false);
-setDesign_oil1(false);
-setDesign_oil2(false);
-setPump_oil(false);
-setWinches_oil(false);
-setWinches_grease(false);
-setHydraulic_oil(false);
-setLeakage(false);
-setCentral_greasing2(false);
-     // navigate("/dash/drafts");
+      setFleet_number("");
+      setDate("");
+      setWeek("");
+      setLocation("");
+      setCountry("");
+      setHr_up("");
+      setHr_uns("");
+      setLast_done("");
+      setNext_done("");
+      setType1("");
+      setType2("");
+      setDate2("");
+      setDate3("");
+      setHour2("");
+      setHour3("");
+      setOverall("");
+      setTt_1(false);
+      setTt_2(false);
+      setTt_3(false);
+      setTt_4(false);
+      setTyre_p(false);
+      setTyre_c(false);
+      setCentarl_greasing(false);
+      setLower_oil(false);
+      setLower_coolant(false);
+      setDesign_oil1(false);
+      setDesign_oil2(false);
+      setPump_oil(false);
+      setWinches_oil(false);
+      setWinches_grease(false);
+      setHydraulic_oil(false);
+      setLeakage(false);
+      setCentral_greasing2(false);
+      // navigate("/dash/drafts");
     }
   }, [isSuccess, navigate]);
 
@@ -106,75 +106,75 @@ setCentral_greasing2(false);
   const onHour2Changed = (e) => setHour2(e.target.value);
   const onHour3Changed = (e) => setHour3(e.target.value);
   const onOverallChanged = (e) => setOverall(e.target.value);
- 
+
   const canSave =
     [
       operator_name,
-fleet_number,
-date,
-week,
-location,
-country,
-hr_up,
-hr_uns,
-last_done,
-next_done,
-type1,
-type2,
-date2,
-date3,
-hour2,
-hour3,
-overall
+      fleet_number,
+      date,
+      week,
+      location,
+      country,
+      hr_up,
+      hr_uns,
+      last_done,
+      next_done,
+      type1,
+      type2,
+      date2,
+      date3,
+      hour2,
+      hour3,
+      overall
     ].every(Boolean) && !isLoading;
 
   const onSaveMentoClicked = async (e) => {
-    
+
     if (canSave) {
       await addNewMento({
         user: userId,
         operator_name,
-fleet_number,
-date,
-week,
-location,
-country,
-hr_up,
-hr_uns,
-last_done,
-next_done,
-type1,
-type2,
-date2,
-date3,
-hour2,
-hour3,
-overall,
-tt_1,
-tt_2,
-tt_3,
-tt_4,
-tyre_p,
-tyre_c,
-centarl_greasing,
-lower_oil,
-lower_coolant,
-design_oil1,
-design_oil2,
-pump_oil,
-winches_oil,
-winches_grease,
-hydraulic_oil,
-leakage,
-central_greasing2
+        fleet_number,
+        date,
+        week,
+        location,
+        country,
+        hr_up,
+        hr_uns,
+        last_done,
+        next_done,
+        type1,
+        type2,
+        date2,
+        date3,
+        hour2,
+        hour3,
+        overall,
+        tt_1,
+        tt_2,
+        tt_3,
+        tt_4,
+        tyre_p,
+        tyre_c,
+        centarl_greasing,
+        lower_oil,
+        lower_coolant,
+        design_oil1,
+        design_oil2,
+        pump_oil,
+        winches_oil,
+        winches_grease,
+        hydraulic_oil,
+        leakage,
+        central_greasing2
       });
     }
   };
-  
+
 
   const errClass = isError ? "errmsg" : "offscreen";
   const validFleet_numberClass = !fleet_number ? "form__input--incomplete" : "";
-  
+
   const content = (
     <Container className="bg-light text-dark rounded">
       <h2 className="px-5 pt-5 pb-3 text-decoration-underline">Add New Machine for Maintenance</h2>
@@ -187,9 +187,9 @@ central_greasing2
         className="px-5"
         onFinish={onSaveMentoClicked}
         layout="vertical"
-      >        
-      <Row className="d-flex justify-content-between">
-        <Col span={11} className="px-2">
+      >
+        <Row className="d-flex justify-content-between">
+          <Col span={11} className="px-2">
             <Form.Item
               label="Operator Name: "
               labelCol={{ span: 10 }}
@@ -197,130 +197,130 @@ central_greasing2
               rules={[{ required: true }]}
             >
               <Input
-                className={`form__input ${validFleet_numberClass} rounded`} 
-                 name="operator_name"
+                className={`form__input ${validFleet_numberClass} rounded`}
+                name="operator_name"
                 value={operator_name}
                 onChange={onOperator_nameChanged}
               />
             </Form.Item>
           </Col>
 
-                <Col span={11} className="px-2">
-                <Form.Item
-                  label="Fleet Number: "
-                  labelCol={{ span: 10 }}
-                  wrapperCol={{ span: 20 }}
-                  rules={[{ required: true }]}
-                >
-                  <Input
-                    className={`form__input ${validFleet_numberClass} rounded`} 
-                    name="fleet_number"
+          <Col span={11} className="px-2">
+            <Form.Item
+              label="Fleet Number: "
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              rules={[{ required: true }]}
+            >
+              <Input
+                className={`form__input ${validFleet_numberClass} rounded`}
+                name="fleet_number"
                 value={fleet_number}
                 onChange={onFleet_numberChanged}
               />
             </Form.Item>
           </Col>
-          </Row>
-          <Row className="d-flex justify-content-between">
-                <Col span={11} className="px-2">
-                <Form.Item
-                  label="Date: "
-                  labelCol={{ span: 10 }}
-                  wrapperCol={{ span: 20 }}
-                  rules={[{ required: true }]}
-                >
-                  <Input
-                    className={`form__input ${validFleet_numberClass} rounded`} 
-                    name="date"
+        </Row>
+        <Row className="d-flex justify-content-between">
+          <Col span={11} className="px-2">
+            <Form.Item
+              label="Date: "
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              rules={[{ required: true }]}
+            >
+              <Input
+                className={`form__input ${validFleet_numberClass} rounded`}
+                name="date"
                 value={date}
                 onChange={onDateChanged}
               />
             </Form.Item>
           </Col>
 
-                <Col span={11} className="px-2">
-                <Form.Item
-                  label="Week"
-                  labelCol={{ span: 10 }}
-                  wrapperCol={{ span: 20 }}
-                  rules={[{ required: true }]}
-                >
-                  <Input
-                    className={`form__input ${validFleet_numberClass} rounded`} 
-                    name="week"
+          <Col span={11} className="px-2">
+            <Form.Item
+              label="Week"
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              rules={[{ required: true }]}
+            >
+              <Input
+                className={`form__input ${validFleet_numberClass} rounded`}
+                name="week"
                 value={week}
                 onChange={onWeekChanged}
               />
             </Form.Item>
           </Col>
-          </Row>
-          <Row className="d-flex justify-content-between">
-                <Col span={11} className="px-2">
-                <Form.Item
-                  label="Location "
-                  labelCol={{ span: 10 }}
-                  wrapperCol={{ span: 20 }}
-                  rules={[{ required: true }]}
-                >
-                  <Input
-                    className={`form__input ${validFleet_numberClass} rounded`} 
-                    name="location"
+        </Row>
+        <Row className="d-flex justify-content-between">
+          <Col span={11} className="px-2">
+            <Form.Item
+              label="Location "
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              rules={[{ required: true }]}
+            >
+              <Input
+                className={`form__input ${validFleet_numberClass} rounded`}
+                name="location"
                 value={location}
                 onChange={onLocationChanged}
               />
             </Form.Item>
           </Col>
 
-                <Col span={11} className="px-2">
-                <Form.Item
-                  label="Country"
-                  labelCol={{ span: 10 }}
-                  wrapperCol={{ span: 20 }}
-                  rules={[{ required: true }]}
-                >
-                  <Input
-                    className={`form__input ${validFleet_numberClass} rounded`} 
-                    name="country"
+          <Col span={11} className="px-2">
+            <Form.Item
+              label="Country"
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              rules={[{ required: true }]}
+            >
+              <Input
+                className={`form__input ${validFleet_numberClass} rounded`}
+                name="country"
                 value={country}
                 onChange={onCountryChanged}
               />
             </Form.Item>
           </Col>
-          </Row>
-          <Row className="d-flex justify-content-between">
-                <Col span={11} className="px-2">
-                <Form.Item
-                  label="Hour ups "
-                  labelCol={{ span: 10 }}
-                  wrapperCol={{ span: 20 }}
-                  rules={[{ required: true }]}
-                >
-                  <Input
-                    className={`form__input ${validFleet_numberClass} rounded`} 
-                    name="hr_up"
+        </Row>
+        <Row className="d-flex justify-content-between">
+          <Col span={11} className="px-2">
+            <Form.Item
+              label="Hour ups "
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              rules={[{ required: true }]}
+            >
+              <Input
+                className={`form__input ${validFleet_numberClass} rounded`}
+                name="hr_up"
                 value={hr_up}
                 onChange={onHr_upChanged}
               />
             </Form.Item>
           </Col>
 
-                <Col span={11} className="px-2">
-                <Form.Item
-                  label="Hour uns "
-                  labelCol={{ span: 10 }}
-                  wrapperCol={{ span: 20 }}
-                  rules={[{ required: true }]}
-                >
-                  <Input
-                    className={`form__input ${validFleet_numberClass} rounded`} 
-                    name="hr_uns"
+          <Col span={11} className="px-2">
+            <Form.Item
+              label="Hour uns "
+              labelCol={{ span: 10 }}
+              wrapperCol={{ span: 20 }}
+              rules={[{ required: true }]}
+            >
+              <Input
+                className={`form__input ${validFleet_numberClass} rounded`}
+                name="hr_uns"
                 value={hr_uns}
                 onChange={onHr_unsChanged}
               />
             </Form.Item>
           </Col>
-          </Row>
-          <Form.Item htmlFor="tt_1" className="px-2 d-flex align-items-center">
+        </Row>
+        <Form.Item htmlFor="tt_1" className="px-2 d-flex align-items-center">
           <Checkbox
             id="tt_1"
             name="tt_1"
@@ -638,12 +638,12 @@ central_greasing2
             onChange={onOverallChanged}
           />
         </Form.Item>
-          <Form.Item labelCol={{span: 7 }} wrapperCol={{ span: 14}} className="d-flex align-items-center justify-content-center">
+        <Form.Item labelCol={{ span: 7 }} wrapperCol={{ span: 14 }} className="d-flex align-items-center justify-content-center">
           <Button type="primary" disabled={!canSave} htmlType="submit" className="px-5 py-1 h5 text-light">
             Save
           </Button>
         </Form.Item>
-       
+
       </Form>
     </Container>
   );

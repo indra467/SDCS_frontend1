@@ -57,7 +57,7 @@ const createNewMento = async (req, res) => {
 // @route PATCH /notes
 // @access Private
 const updateMento = async (req, res) => {
-    const { user,operator_name,fleet_number, date,week,location,country,hr_up,hr_uns,last_done,next_done,type1,type2, date2, date3, hour2, hour3, overall,tt_1,tt_2,tt_3,tt_4,tyre_p,tyre_c,centarl_greasing,lower_oil,lower_coolant,design_oil1,design_oil2,pump_oil,winches_oil,winches_grease,hydraulic_oil,leakage,central_greasing2    } = req.body
+    const { id, user,operator_name,fleet_number, date,week,location,country,hr_up,hr_uns,last_done,next_done,type1,type2, date2, date3, hour2, hour3, overall,tt_1,tt_2,tt_3,tt_4,tyre_p,tyre_c,centarl_greasing,lower_oil,lower_coolant,design_oil1,design_oil2,pump_oil,winches_oil,winches_grease,hydraulic_oil,leakage,central_greasing2    } = req.body
 
     // Confirm data
     if (!user || !operator_name|| ! fleet_number|| ! date|| ! week|| ! location|| ! country|| ! hr_up|| ! hr_uns|| ! last_done|| ! next_done|| ! type1|| ! type2|| ! date2|| ! date3|| ! hour2|| ! hour3|| ! overall) {
