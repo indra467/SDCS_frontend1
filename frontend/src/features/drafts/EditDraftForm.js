@@ -10,6 +10,9 @@ import useAuth from "../../hooks/useAuth";
 import Styles from "./Draft.module.css";
 import { Form, Input, Button, Row, Col, Checkbox } from "antd";
 import { Container } from "react-bootstrap";
+import Base64_URL from './base64';
+import FileSaver from 'file-saver';
+
 const EditDraftForm = ({ draft, users }) => {
   const [form] = Form.useForm();
   const { isManager, isAdmin, isOperation_Employee, isBilling_Employee } =
@@ -99,6 +102,26 @@ const EditDraftForm = ({ draft, users }) => {
     link.click();
   }
 
+  const [file, setFile]=useState(Base64_URL);
+  const downloadTemplate=()=>{
+    let dataBlob = Base64_URL;
+    let sliceSize=1024;
+    let byteCharacters=atob(dataBlob);
+    let bytesLength=byteCharacters.length;
+    let slicesCount=Math.ceil(bytesLength/sliceSize);
+    let byteArrays=new Array(slicesCount);
+    for(let sliceIndex=0;sliceIndex<slicesCount;++sliceIndex){
+      let begin=sliceIndex*sliceSize;
+      let end=Math.min(begin+sliceSize,bytesLength);
+      let bytes=new Array(end-begin);
+      for(let offset=begin,i=0;offset<end;++i,++offset){
+        bytes[i]=byteCharacters[offset].charCodeAt(0);
+      }
+      byteArrays[sliceIndex]=new Uint8Array(bytes);
+    }
+    let blob=new Blob(byteArrays,{type: 'application/vnd.ms-excel'});
+    FileSaver.saveAs(new Blob([blob],{}), 'Template.xls');
+  }
   useEffect(() => {
     if (isSuccess) {
       setMachine_No("");
@@ -675,7 +698,13 @@ const EditDraftForm = ({ draft, users }) => {
         {isBilling_Employee && (
           <Row className="d-flex justify-content-between">
             <Col span={11}>
-                
+              <Form.Item
+                label="Download Billing Template"
+                labelCol={{ span: 11 }}
+                wrapperCol={{ span: 12 }}
+              >
+                <button onClick={downloadTemplate} className="p-1 rounded border-1">Download</button>
+              </Form.Item>
             </Col>
             <Col span={12} className="px-2">
               {/* <label htmlFor="file-upload" className='custom-file-upload'>Upload pdf</label>
@@ -683,7 +712,7 @@ const EditDraftForm = ({ draft, users }) => {
               <Form.Item
                 label="Upload Doc from billing section"
                 htmlFor="file-upload"
-                labelCol={{ span: 12 }}
+                labelCol={{ span: 10 }}
                 wrapperCol={{ span: 12 }}
                 rules={[{ required: true }]}
               >
@@ -692,7 +721,7 @@ const EditDraftForm = ({ draft, users }) => {
                   label="image"
                   name="myfile3"
                   id="file-upload"
-                  accept=".pdf, .jpeg, .png, .jpg"
+                  accept=".pdf, .xls"
                   onChange={(e) => handleFileUpload3(e)}
                 />
               </Form.Item>
@@ -700,15 +729,15 @@ const EditDraftForm = ({ draft, users }) => {
           </Row>
         )}
         <iframe src={draft.myfile} title="=MYFile1"></iframe>
-        <button onClick={downloadPDF}>Download</button>
+        <button onClick={downloadPDF} className="p-1 rounded border-1">Download</button>
         {(isBilling_Employee || isAdmin) && (
           <iframe src={draft.myfile2} title="Myfile2"></iframe>
         )}
         {(isBilling_Employee || isAdmin) && (
-          <button onClick={downloadPDF2}>Download</button>
+          <button onClick={downloadPDF2} className="p-1 rounded border-1">Download</button>
         )}
         {isAdmin && <iframe src={draft.myfile3} title="Myfile3"></iframe>}
-        {isAdmin && <button onClick={downloadPDF3}>Download</button>}
+        {isAdmin && <button onClick={downloadPDF3} className="p-1 rounded border-1">Download</button>}
 
         <Form.Item
           labelCol={{ span: 7 }}
