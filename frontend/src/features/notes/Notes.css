@@ -1,0 +1,26 @@
+.welcome{
+    background: linear-gradient(297deg, #3292D8 17.85%, rgba(255, 255, 255, 0.00) 116.7%);
+    color: black;
+    overflow-x: hidden;
+    padding: 2rem;
+}
+.function{
+    font-size: larger;
+    text-decoration: none;
+    color: rgb(27, 7, 7);
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0;
+}
+.border-func{
+    border: 2px solid rgb(27, 7, 7);
+    text-decoration: none;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    background-color: rgba(240, 248, 255, 0.596);
+}
+.border-func:hover{
+    scale: 1.1;
+    text-decoration-color: black;
+}

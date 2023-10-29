@@ -23,8 +23,8 @@ const Draft = ({ draftId }) => {
 
         return (
             <tr className="table__row">
-                <td className="table__cell note__title">{draft.machine_no}</td>
-                <td className={`table__cell `}>
+                <td className="table__cell note__title text-center">{draft.machine_no}</td>
+                <td className={`table__cell text-center`}>
                     <button
                         className="icon-button table__button"
                         onClick={handleEdit}

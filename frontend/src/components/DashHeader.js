@@ -12,8 +12,12 @@ import { useSendLogoutMutation } from '../features/auth/authApiSlice'
 import useAuth from '../hooks/useAuth'
 import PulseLoader from 'react-spinners/PulseLoader'
 import { Button } from "antd";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import { BackwardFilled, LogoutOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import Styles from './DashHeader.module.css';
+import { MdArrowBack, MdControlPoint } from "react-icons/md";
+import { AiFillControl } from "react-icons/ai";
+import { RiDraftFill } from "react-icons/ri";
+import { FaFirstdraft } from "react-icons/fa";
 
 const DASH_REGEX = /^\/dash(\/)?$/
 const NOTES_REGEX = /^\/dash\/notes(\/)?$/
@@ -58,7 +62,7 @@ const DashHeader = ({collapse,changeCollapse}) => {
                 title="New Note"
                 onClick={onNewNoteClicked}
             >
-                <FontAwesomeIcon icon={faFileCirclePlus} />
+                <MdControlPoint size={40}/>
             </button>
         )
     }
@@ -71,7 +75,7 @@ const DashHeader = ({collapse,changeCollapse}) => {
                 title="New Draft"
                 onClick={onNewDraftClicked}
             >
-                <FontAwesomeIcon icon={faFileCirclePlus} />
+                <RiDraftFill size={40}/>
             </button>
         )
     }
@@ -112,7 +116,7 @@ const DashHeader = ({collapse,changeCollapse}) => {
                 title="Notes"
                 onClick={onNotesClicked}
             >
-                <FontAwesomeIcon icon={faFilePen} />
+                <AiFillControl size={40}/>
             </button>
         )
     }
@@ -125,7 +129,7 @@ const DashHeader = ({collapse,changeCollapse}) => {
                 title="Drafts"
                 onClick={onDraftsClicked}
             >
-                <FontAwesomeIcon icon={faFilePen} />
+                <FaFirstdraft size={30}/>
             </button>
         )
     }
@@ -136,7 +140,7 @@ const DashHeader = ({collapse,changeCollapse}) => {
             title="Logout"
             onClick={sendLogout}
         >
-            <FontAwesomeIcon icon={faRightFromBracket} />
+            <LogoutOutlined size={15}/>
         </button>
     )
 
@@ -180,6 +184,8 @@ const DashHeader = ({collapse,changeCollapse}) => {
           <nav className={`${Styles.dash_header__nav}`}>{buttonContent}</nav>
         </div>
       </header>
+      {!pathname.endsWith('dash') && <button onClick={()=>navigate(-1)} className={`${Styles.back}`}><MdArrowBack size={20}/>
+      </button>}
     </>
   );
 

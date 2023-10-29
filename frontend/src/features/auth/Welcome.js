@@ -4,6 +4,7 @@ import useTitle from '../../hooks/useTitle'
 import Styles from '../../components/DashHeader.module.css'
 import OperationDash from '../manage/OperationDash'
 import DraftsList from '../drafts/DraftsList'
+import Sales from '../notes/Sales'
 const Welcome = () => {
 
     const { username, isManager, isAdmin, isSales_Employee, isOperation_Employee, isBilling_Employee } = useAuth()
@@ -35,6 +36,7 @@ const Welcome = () => {
 {(isManager || isAdmin || isOperation_Employee || isBilling_Employee) && <div className={`vh-100 ${Styles.bg}`}>
             <DraftsList/>
         </div>}
+        {(isSales_Employee) && <Sales/>}
         </section>
     )
 

@@ -2,7 +2,7 @@
   font-family: 'Nunito', sans-serif;
   min-height: 100vh;
   color: white;
-  background: linear-gradient(180deg,  #ACBABB 0%, #000E5600 100%);
+  background: linear-gradient(297deg, #3292D8 17.85%, rgba(255, 255, 255, 0.00) 116.7%);
   /* overflow: hidden; */
 }
 .menu_icon{
@@ -111,11 +111,23 @@
     padding: 1em;
   }
 }
-.bg{
-  background: linear-gradient(180deg,  #ACBABB 0%, #000E5600 100%);
-  
-}
+/* .bg{
+  background: linear-gradient(180deg,  #ACBABB 0%, #000E5600 100%); 
+} */
 .sidebar
 {
   height: 100vh !important;
+}
+
+.back{
+  position: absolute;
+  z-index: 2;
+  top: 10%;
+  margin-left: 1%;
+  margin-top: 1%;
+  display: inline-block;
+  width: min-content;
+  border-radius: 50%;
+  border: none;
+  
 }

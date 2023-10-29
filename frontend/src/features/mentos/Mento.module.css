@@ -1,10 +1,86 @@
 .icon_button {
-    width: 48px;
-    height: 48px;
-    font-size: 2.5rem;
-    background-color: transparent;
-    border: none;
-    color: var(--COLOR);
-    display: grid;
-    place-content: center;
-  }
+  width: 48px;
+  height: 48px;
+  font-size: 2.5rem;
+  background-color: transparent;
+  border: none;
+  color: var(--COLOR);
+  display: grid;
+  place-content: center;
+}
+
+.sty {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin: 0.2rem;
+  background-color: #11172a;
+  width: fit-content;
+  margin-bottom: 10px;
+}
+
+.sty a{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.sty:hover{
+  scale: 1.01;
+}
+
+.edit{
+  border: none;
+  background-color: white;
+}
+
+.step_dots {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 8px;
+  
+}
+
+.step_dot {
+  width: 20px;
+  height: 20px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.step_dot.active {
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+}
+.step_dot.working{
+  background-color: #ffc100;
+  color: #000;
+}
+.inline{
+  display: inline-block;
+}
+
+.cont_parent{
+  min-height: 100vh;
+  height: auto;
+  overflow:auto;
+  background: linear-gradient(297deg, #3292D8 17.85%, rgba(255, 255, 255, 0.00) 116.7%);
+}
+.cont{
+  background: linear-gradient(297deg, #3292D8 17.85%, rgba(255, 255, 255, 0.00) 116.7%);
+  min-height: 100vh;
+  height: auto;
+  padding-bottom: 1.5rem;
+  /* width: 100vw; */
+}
+
+.form_menta{
+  background: #ffffff;
+}

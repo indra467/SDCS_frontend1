@@ -1,4 +1,5 @@
 import NewMentoForm from './NewMentoForm'
+import NewMentoForm2 from './NewMentoForm2'
 import { useGetUsersQuery } from '../users/usersApiSlice'
 import PulseLoader from 'react-spinners/PulseLoader'
 import useTitle from '../../hooks/useTitle'
@@ -16,7 +17,7 @@ const NewMento = () => {
     if (!users?.length) return <PulseLoader color={"#FFF"} />
 
     // const content = <NewDraftForm users={users} />
-   const content = <NewMentoForm users={users}/>
+   const content = <NewMentoForm2 users={users}/>
     return content
 }
 export default NewMento

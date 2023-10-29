@@ -24,7 +24,6 @@ const Notif = ({ notifId }) => {
         return (
             <tr className="table__row">
                 <td className="table__cell note__title">Changes made  to {notif.fleet_number} at {created}</td>
-               
             </tr>
             
         )

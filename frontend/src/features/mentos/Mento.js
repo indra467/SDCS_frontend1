@@ -3,7 +3,8 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from 'react-router-dom'
 import { useGetMentosQuery } from './mentosApiSlice'
 import { memo } from 'react'
-
+import { EditFilled } from '@ant-design/icons'
+import Styles from './Mento.module.css';
 const Mento = ({ mentoId }) => {
 
     const { mento } = useGetMentosQuery("mentosList", {
@@ -26,10 +27,10 @@ const Mento = ({ mentoId }) => {
                 <td className="table__cell note__title">{mento.fleet_number}</td>
                 <td className={`table__cell `}>
                     <button
-                        className="icon-button table__button"
+                        className={`icon-button table__button ${Styles.edit}`}
                         onClick={handleEdit}
                     >
-                        <FontAwesomeIcon icon={faPenToSquare} />
+                        <EditFilled size={50}/>
                     </button></td>
             </tr>
             

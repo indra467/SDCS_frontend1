@@ -110,11 +110,11 @@ const Login = () => {
                   onChange={handlePwdInput}
                 />
               </Form.Item>
-              <Form.Item>
+              {/* <Form.Item>
                 <Checkbox onChange={handleToggle} checked={persist}>
                     Save Login Details
                 </Checkbox>
-              </Form.Item>
+              </Form.Item> */}
               <Form.Item className="d-flex justify-content-center">
                 <Button
                   type="primary"

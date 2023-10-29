@@ -29,21 +29,21 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route exact path="/" element={<Layout />}>
         {/* public routes */}
         <Route index element={<Public />} />
-        <Route path="login" element={<Login />} />
+        <Route exact path="login" element={<Login />} />
 
         {/* Protected Routes */}
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
             <Route element={<Prefetch />}>
-              <Route path="dash" element={<DashLayout />}>
+              <Route exact path="dash" element={<DashLayout />}>
 
                 <Route index element={<Welcome />} />
 
                 <Route element={<RequireAuth allowedRoles={[ROLES.Manager, ROLES.Admin]} />}>
-                  <Route path="users">
+                  <Route exact path="users">
                     <Route index element={<UsersList />} />
                     <Route path=":id" element={<EditUser />} />
                     <Route path="new" element={<NewUserForm />} />

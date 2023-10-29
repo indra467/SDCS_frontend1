@@ -53,10 +53,10 @@ const DraftsList = () => {
       <table className="table">
         <thead className="table__thead">
           <tr>
-            <th scope="col" className="note__title">
+            <th scope="col" className="note__title text-center">
               Machine No
             </th>
-            <th scope="col" className="table__th user__edit">Edit</th>
+            <th scope="col" className="table__th user__edit text-center">Edit</th>
           </tr>
         </thead>
         <tbody>{tableContent}</tbody>

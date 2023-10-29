@@ -2,6 +2,7 @@ import {
   ApiOutlined,
   LogoutOutlined,
   MailOutlined,
+  NodeExpandOutlined,
   NotificationOutlined,
   SettingOutlined,
   UserAddOutlined,
@@ -78,7 +79,8 @@ const Sidebar = ({ collapse }) => {
         key: "5",
         icon: <UserAddOutlined />,
         label: "Add New User",
-      }
+      },
+
     ];
   } else if (isOperation_Employee){
     item = [
@@ -89,6 +91,7 @@ const Sidebar = ({ collapse }) => {
       },
       {
         key: "6",
+        icon: <NodeExpandOutlined/>,
         label: "Maintenance",
       }
     ];

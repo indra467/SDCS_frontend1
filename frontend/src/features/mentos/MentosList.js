@@ -7,7 +7,7 @@ import PulseLoader from "react-spinners/PulseLoader";
 import { Button, Table } from "antd";
 import { Container } from "react-bootstrap";
 import { Link } from 'react-router-dom'
-
+import Styles from './Mento.module.css';
 
 const MentosList = () => {
   useTitle("techNotes: Mentos List");
@@ -66,10 +66,12 @@ const MentosList = () => {
   }
 
   return (
-    <div className="mt-5 mx-5 p-1 bg-white rounded border h-100 krish">
-      <p><Link to="/dash/mentos/new">Add new machine to maintenance</Link></p>
+    <>
+    <p className={`mt-5 mx-5 ${Styles.sty}`}><Link to="/dash/mentos/new">Add new machine to maintenance</Link></p>
+    <div className={`mx-5 p-1 bg-white rounded border h-100 krish mb-5 `}>
       <div className="">{content}</div>
     </div>
+    </>
   );
 };
 export default MentosList;

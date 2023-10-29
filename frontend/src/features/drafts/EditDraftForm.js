@@ -535,7 +535,7 @@ const EditDraftForm = ({ draft, users }) => {
         </Row>
         <Col span={11} className="px-2">
           <Form.Item
-            label="Mark as urgent"
+            label="Urgency"
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 12 }}
           >
@@ -674,13 +674,16 @@ const EditDraftForm = ({ draft, users }) => {
 
         {isBilling_Employee && (
           <Row className="d-flex justify-content-between">
-            <Col span={11} className="px-2">
+            <Col span={11}>
+                
+            </Col>
+            <Col span={12} className="px-2">
               {/* <label htmlFor="file-upload" className='custom-file-upload'>Upload pdf</label>
                */}
               <Form.Item
                 label="Upload Doc from billing section"
                 htmlFor="file-upload"
-                labelCol={{ span: 8 }}
+                labelCol={{ span: 12 }}
                 wrapperCol={{ span: 12 }}
                 rules={[{ required: true }]}
               >
