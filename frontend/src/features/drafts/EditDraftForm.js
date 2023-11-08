@@ -5,7 +5,7 @@ import {
 } from "./draftsApiSlice";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import useAuth from "../../hooks/useAuth";
 import Styles from "./Draft.module.css";
 import { Form, Input, Button, Row, Col, Checkbox } from "antd";
@@ -102,7 +102,6 @@ const EditDraftForm = ({ draft, users }) => {
     link.click();
   }
 
-  const [file, setFile]=useState(Base64_URL);
   const downloadTemplate=()=>{
     let dataBlob = Base64_URL;
     let sliceSize=1024;

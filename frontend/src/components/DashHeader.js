@@ -12,7 +12,8 @@ import { useSendLogoutMutation } from '../features/auth/authApiSlice'
 import useAuth from '../hooks/useAuth'
 import PulseLoader from 'react-spinners/PulseLoader'
 import { Button } from "antd";
-import { BackwardFilled, LogoutOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import {AiOutlineMenuUnfold, AiOutlineMenuFold} from 'react-icons/ai'
+import {  LogoutOutlined } from "@ant-design/icons";
 import Styles from './DashHeader.module.css';
 import { MdArrowBack, MdControlPoint } from "react-icons/md";
 import { AiFillControl } from "react-icons/ai";
@@ -174,11 +175,11 @@ const DashHeader = ({collapse,changeCollapse}) => {
         <div className={`${Styles.dash_header__container} ${Styles.dashClass}`}>
         <Button
           type="text"
-          icon={collapse ? <MenuUnfoldOutlined className="menu_icon"/> : <MenuFoldOutlined className="menu_icon"/>}
+          icon={collapse ? <AiOutlineMenuUnfold className="menu_icon" size={30}/> : <AiOutlineMenuFold className="menu_icon" size={30}/>}
           onClick={()=>changeCollapse()}
           className="text-light"
         />
-          <Link to="/dash">
+          <Link to="/dash" className={`${Styles.company_logo}`}>
             <h1 className={`${Styles.dash_header__title}`}>Shri Dinesh Crane Services</h1>
           </Link>
           <nav className={`${Styles.dash_header__nav}`}>{buttonContent}</nav>

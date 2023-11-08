@@ -8,11 +8,11 @@ const Crane = () => {
       <section className={`${Styles.city_stuff}`}>
       <div className={`${Styles.landing} d-flex flex-column  align-items-center`}>
       <h1 className={`${Styles.advice__title}`}>SDCS Cranes</h1>
-      <Button className={`rounded-5 ${Styles.button}`}>
           <Link to="/login" className="m-3 text-decoration-none text-light">
+      <Button className={`rounded-5 ${Styles.button}`}>
             Employee Login
-          </Link>
         </Button>
+          </Link>
         </div>
         <ul className={`${Styles.skyscrappers__list}`}>
           <li

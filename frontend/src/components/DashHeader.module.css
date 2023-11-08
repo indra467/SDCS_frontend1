@@ -7,7 +7,6 @@
 }
 .menu_icon{
     color: #fff;
-    font-size: 500px;
 }
 
 .notes_icon {
@@ -34,6 +33,11 @@
   max-width: 800px;
 }
 
+.company_logo{
+  text-decoration: none;
+  padding: 4px;
+  margin-left: 4rem;
+}
 .dash_header__nav {
   display: flex;
   flex-flow: row nowrap;
