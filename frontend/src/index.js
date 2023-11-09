@@ -8,10 +8,10 @@ import { store } from './app/store'
 import { Provider } from 'react-redux'
 
 import { disableReactDevTools} from '@fvilers/disable-react-devtools';
-if(process.env.NODE_ENV === 'production') disableReactDevTools()
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import Alert from 'react-bootstrap/Alert';
-
+if(process.env.NODE_ENV === 'production') disableReactDevTools()
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
