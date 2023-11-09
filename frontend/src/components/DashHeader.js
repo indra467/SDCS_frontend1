@@ -27,7 +27,7 @@ const USERS_REGEX = /^\/dash\/users(\/)?$/
 
 const DashHeader = ({collapse,changeCollapse}) => {
 
-    const { isManager, isAdmin } = useAuth()
+    const { isManager, isAdmin, isSales_Employee, isBilling_Employee, isOperation_Employee } = useAuth()
 
     const navigate = useNavigate()
     const { pathname } = useLocation()
@@ -69,7 +69,7 @@ const DashHeader = ({collapse,changeCollapse}) => {
     }
 
     let newDraftButton = null
-    if (NOTES_REGEX.test(pathname)) {
+    if (DRAFTS_REGEX.test(pathname)) {
         newDraftButton = (
             <button
                 className={`${Styles.icon_button}`}
@@ -123,7 +123,7 @@ const DashHeader = ({collapse,changeCollapse}) => {
     }
 
     let draftsButton = null
-    if (!NOTES_REGEX.test(pathname) && pathname.includes('/dash')) {
+    if (!DRAFTS_REGEX.test(pathname) && pathname.includes('/dash')) {
         draftsButton = (
             <button
                 className={`${Styles.icon_button}`}

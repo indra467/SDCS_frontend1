@@ -33,11 +33,6 @@ const Sidebar = ({ collapse }) => {
         key: "2",
         icon: <NotificationOutlined />,
         label: "Notifications",
-      },
-      {
-        key: "3",
-        icon: <ApiOutlined />,
-        label: "Functions",
       }
     ];
   } else if (isManager) {
