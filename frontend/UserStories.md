@@ -1,5 +1,13 @@
 # User Stories for techNotes
 
+how to test in local server, 
+1. comment out line "@fvilers/disable-react-devtools": "^1.3.0", from package.json
+2. comment out import { disableReactDevTools} from '@fvilers/disable-react-devtools';
+if(process.env.NODE_ENV === 'production') disableReactDevTools() from index.js
+3. set devTools: true in store.js
+4. uncomment baseUrl: 'http://localhost:3500',   in apislice.js
+5. comment the below line
+
 1. [ ] Replace current sticky note system
 2. [x] Add a public facing page with basic contact info 
 3. [x] Add an employee login to the notes app 
